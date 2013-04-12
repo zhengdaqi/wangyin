@@ -21,7 +21,7 @@ td {
 }
 
 blockquote {
-    border-left: 3pt lightgrey solid;
+    border-left: 3pt lightgreen solid;
     padding-left: 5pt;
 }
 
@@ -29,7 +29,7 @@ pre {
     font-size: 80%;
     border: solid 1px #CC929A;
     background-color: LightGrey;
-    padding: 2px;
+    padding: 5pt;
 }
 
 div {

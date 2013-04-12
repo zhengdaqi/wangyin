@@ -3,8 +3,9 @@ layout: default
 title: Markdown Test
 ---
 
-Just A Test
------------
+# Just A Test
+## Another Test
+### Yet Another Test
 
 
 * time
@@ -16,14 +17,10 @@ Just A Test
 3. earth
 4. water
 
-> quote
-> haha
-> ok
-
 
 ---------------------------------------
 
-Some code:
+*Scheme* code function `value`
 
     (define value?
       (lambda (exp)
@@ -34,4 +31,19 @@ Some code:
 
 --------------------------
 
-Muahahahahhaha
+[I'm an inline-style link](https://www.google.com)
+
+--------------------------
+
+Picture:
+![dog](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTVZdc4qJd7an7I87cwFr_jum3bD8kululFx0YU8SgSw6Qne4A1)
+
+-----------------
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
