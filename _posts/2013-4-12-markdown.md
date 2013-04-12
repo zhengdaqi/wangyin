@@ -35,6 +35,5 @@ Some *Scheme* code:
 --------------------------
 
 Picture:
-![dog](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTVZdc4qJd7an7I87cwFr_jum3bD8kululFx0YU8SgSw6Qne4A1 
-  "dog")
+![dog](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTVZdc4qJd7an7I87cwFr_jum3bD8kululFx0YU8SgSw6Qne4A1)
 
