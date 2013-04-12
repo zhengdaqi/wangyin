@@ -1,0 +1,89 @@
+body {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 12pt;
+	padding: .6in 1.2in .6in 1.2in;
+}
+
+li {
+    padding-bottom: 8pt;
+}
+
+
+p.desc {
+    margin-left: 20pt;
+}
+
+
+pre {
+    font-size: 80%;
+
+}
+
+td {
+	border: 2pt lightgrey dashed;
+	vertical-align:text-top;
+	padding: 10pt;
+}
+
+blockquote {
+    border-left: 3pt lightgrey solid;
+    padding-left: 5pt;
+}
+
+div {
+    float: right;
+    border: solid 1px grey;
+    padding: 2px;
+    transform:rotate(30deg);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+	background-color: #FFBA75;
+}
+
+hr {
+    color: grey;
+}
+
+
+.deletion {
+    border: solid 1px #CC929A;
+    /* border: solid 1px #E6A4AE; */
+    background-color: LightPink;
+}
+
+.insertion {
+    border: solid 1px #73BE73;
+    /* border: solid 1px #82D682; */
+    background-color: LightGreen;
+}
+
+.change {
+    border: solid 1px #8AADB8;
+    /* border: solid 1px #9CC2CF; */
+    background-color: LightBlue;
+    cursor: pointer;
+}
+
+.move {
+    border: solid 1px LightPink;
+    /* border: solid 1px #BEBEBE; */
+    cursor: pointer;
+}
+
+.move-change {
+    border: solid 1px LightPink;
+    background-color: LightBlue;
+    /* border: solid 1px #BEBEBE; */
+    cursor: pointer;
+}
+
+.unchanged {
+    border: solid 1px #A9A9A9;
+    /* border: solid 1px #BEBEBE; */
+    cursor: pointer;
+}
