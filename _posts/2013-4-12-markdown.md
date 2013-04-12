@@ -25,14 +25,12 @@ Just A Test
 
 Some Scheme code:
 
-```scheme
-(define value?
-  (lambda (exp)
-    (pmatch exp
-      [,x (guard (atom? x)) #t]
-      [((lambda (,x) ,e) ,env) #t]
-      [else #f])))
-```
+    (define value?
+      (lambda (exp)
+        (pmatch exp
+          [,x (guard (atom? x)) #t]
+          [((lambda (,x) ,e) ,env) #t]
+          [else #f])))
 
 --------------------------
 
