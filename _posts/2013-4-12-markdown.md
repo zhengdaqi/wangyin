@@ -3,8 +3,9 @@ layout: default
 title: Markdown Test
 ---
 
-Just A Test
------------
+# Just A Test
+## Another Test
+### Yet Another Test
 
 
 * time
