@@ -1,3 +1,8 @@
+---
+layout: default
+title: Markdown Test
+---
+
 Just A Test
 -----------
 
