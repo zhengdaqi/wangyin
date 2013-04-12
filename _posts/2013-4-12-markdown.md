@@ -16,19 +16,10 @@ Just A Test
 3. earth
 4. water
 
-> quote
-> haha
-> ok
-
-- [ ] a task list item
-- [ ] list syntax required
-- [ ] normal **formatting**, @mentions, #1234 refs
-- [ ] incomplete
-- [x] completed
 
 ---------------------------------------
 
-Some Scheme code:
+Some *Scheme* code:
 
     (define value?
       (lambda (exp)
