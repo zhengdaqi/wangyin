@@ -1,4 +1,6 @@
-just a test
+Just A Test
+-----------
+
 
 * time
 * space
@@ -14,6 +16,8 @@ just a test
 > ok
 
 
+---------------------------------------
+
 Some code:
 
     (define value?
@@ -22,5 +26,3 @@ Some code:
           [,x (guard (atom? x)) #t]
           [((lambda (,x) ,e) ,env) #t]
           [else #f])))
-
-
