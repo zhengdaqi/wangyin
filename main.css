@@ -14,11 +14,6 @@ p.desc {
 }
 
 
-pre {
-    font-size: 80%;
-
-}
-
 td {
 	border: 2pt lightgrey dashed;
 	vertical-align:text-top;
@@ -30,9 +25,11 @@ blockquote {
     padding-left: 5pt;
 }
 
-code {
+pre {
+    font-size: 80%;
     border: solid 1px #CC929A;
-    background-color: LightPink;
+    background-color: LightGrey;
+    width: 50%;
 }
 
 div {
