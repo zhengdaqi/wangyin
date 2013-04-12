@@ -31,8 +31,8 @@ blockquote {
 }
 
 code {
-    border-left: 3pt lightgrey solid;
-    padding-left: 5pt;
+    border: solid 1px #CC929A;
+    background-color: LightPink;
 }
 
 div {
