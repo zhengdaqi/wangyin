@@ -19,7 +19,7 @@ Just A Test
 
 ---------------------------------------
 
-Some *Scheme* code:
+*Scheme* code function `value`
 
     (define value?
       (lambda (exp)
