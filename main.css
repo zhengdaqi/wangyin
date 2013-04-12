@@ -30,6 +30,11 @@ blockquote {
     padding-left: 5pt;
 }
 
+code {
+    border-left: 3pt lightgrey solid;
+    padding-left: 5pt;
+}
+
 div {
     float: right;
     border: solid 1px grey;
