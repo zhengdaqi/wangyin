@@ -10,6 +10,7 @@ body {
 
 H2 {
     font-family: "Hiragino Sans GB W3", "STKai", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    margin-bottom: 40px;
     padding: 10px;
     border-bottom: 2px LightGrey solid;
     border-left: 2px LightGrey solid;
