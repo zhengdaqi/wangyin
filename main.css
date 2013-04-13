@@ -9,19 +9,14 @@ li {
 }
 
 
-p.desc {
-    margin-left: 20pt;
-}
-
-
 td {
-	border: 2pt lightgrey dashed;
+	border: 1pt lightgrey dashed;
 	vertical-align:text-top;
 	padding: 10pt;
 }
 
 blockquote {
-    border-left: 3pt lightgreen solid;
+    border-left: 3pt lightgrey solid;
     padding-left: 5pt;
 }
 
@@ -29,14 +24,15 @@ pre {
     font-size: 80%;
     border: solid 1px #CC929A;
     background-color: LightGrey;
-    padding: 5pt;
+    padding: .2em;
+    width: 60em;
+    margin-left: 1.8em;
 }
 
 div {
     float: right;
     border: solid 1px grey;
     padding: 2px;
-    transform:rotate(30deg);
 }
 
 a {
@@ -49,43 +45,4 @@ a:hover {
 
 hr {
     color: grey;
-}
-
-
-.deletion {
-    border: solid 1px #CC929A;
-    /* border: solid 1px #E6A4AE; */
-    background-color: LightPink;
-}
-
-.insertion {
-    border: solid 1px #73BE73;
-    /* border: solid 1px #82D682; */
-    background-color: LightGreen;
-}
-
-.change {
-    border: solid 1px #8AADB8;
-    /* border: solid 1px #9CC2CF; */
-    background-color: LightBlue;
-    cursor: pointer;
-}
-
-.move {
-    border: solid 1px LightPink;
-    /* border: solid 1px #BEBEBE; */
-    cursor: pointer;
-}
-
-.move-change {
-    border: solid 1px LightPink;
-    background-color: LightBlue;
-    /* border: solid 1px #BEBEBE; */
-    cursor: pointer;
-}
-
-.unchanged {
-    border: solid 1px #A9A9A9;
-    /* border: solid 1px #BEBEBE; */
-    cursor: pointer;
 }
