@@ -4,11 +4,11 @@ layout: nil
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
-  <title>http://yinwang0.github.io/blog</title>
-  <link href="http://yinwang0.github.io/blog"/>
-  <link type="application/atom+xml" rel="self" href="http://yinwang0.github.io/blog/atom.xml"/>
+  <title>http://wwww.yinwang.org</title>
+  <link href="http://wwww.yinwang.org"/>
+  <link type="application/atom+xml" rel="self" href="http://wwww.yinwang.org/atom.xml"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>http://yinwang0.github.io/blog</id>
+  <id>http://wwww.yinwang.org</id>
   <author>
     <name>Yin Wang</name>
     <email>yinwang0@gmail.com</email>
@@ -16,13 +16,13 @@ layout: nil
 
   {% for post in site.posts %}
   <entry>
-    <id>http://yinwang0.github.io/blog{{ post.id }}</id>
-    <link type="text/html" rel="alternate" href="http://yinwang0.github.io/blog{{ post.url }}"/>
+    <id>http://wwww.yinwang.org{{ post.id }}</id>
+    <link type="text/html" rel="alternate" href="http://wwww.yinwang.org{{ post.url }}"/>
     <title>{{ post.title | xml_escape }}</title>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <author>
       <name>Yin Wang</name>
-      <uri>http://yinwang0.github.io/blog</uri>
+      <uri>http://wwww.yinwang.org</uri>
     </author>
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
