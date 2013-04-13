@@ -16,7 +16,7 @@ Scheme 的配置有很多种方式，我不想介绍太多东西，免得有人�
 
 世界上最好的 Scheme 实现是 Chez Scheme，但是它不免费也不开源。所以如果你不想破费，那就只好下载一个它的“免费版”，叫做 Petite Chez Scheme（petite 是法语里“小”的意思）。它可以在这里下载：
 
-    [http://scheme.com/download](http://scheme.com/download)
+[http://scheme.com/download](http://scheme.com/download)
 
 这个页面挺长，上面都是正式版的 Chez Scheme，一点击就会叫你“联系销售人员”。要滚动到下面才能看见免费的版本。怎么安装我就不讲了，自己看说明应该很容易的。
 
@@ -24,7 +24,7 @@ Petite 是一个完善的，高效的实现，你可以把它当成解释器使�
 
 所以如果你想写稍微大点的东西，可以用 Racket。它可以在这里下载：
 
-    [http://racket-lang.org](http://racket-lang.org)
+[http://racket-lang.org](http://racket-lang.org)
 
 安装应该很容易。Ubuntu 也自带了 Racket，所以可以直接让系统安装它。
 
@@ -36,7 +36,7 @@ Petite 是一个完善的，高效的实现，你可以把它当成解释器使�
 
 ParEdit mode 可以在这里下载：
 
-    [http://mumble.net/~campbell/emacs/paredit.el](http://mumble.net/~campbell/emacs/paredit.el)
+[http://mumble.net/~campbell/emacs/paredit.el](http://mumble.net/~campbell/emacs/paredit.el)
 
 下载之后，把它放到一个目录里，比如 ~/.emacs.d，然后打开 ~/.emacs 配置文件，加入如下设置：
 
@@ -142,7 +142,7 @@ ParEdit mode 是一个很特殊的模式。它起作用的时候，你不能直�
 
 你只需要下载这个 el，放到你的 .emacs.d:
 
-    [https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el](https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el)
+[https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el](https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el)
 
 然后在 .emacs 里面加入两行：
 
