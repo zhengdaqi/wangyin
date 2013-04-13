@@ -41,6 +41,11 @@ pre {
 }
 
 
+code {
+    color: DarkBlue;
+}
+
+
 a {
     text-decoration: none;
 }
