@@ -1,4 +1,4 @@
---
+---
 layout: default
 title: 爱因斯坦谈教育
 ---
