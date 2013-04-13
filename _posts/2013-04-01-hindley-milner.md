@@ -1,6 +1,6 @@
 ---
 layout: default
-title Hindley-Milner 类型系统的根本性错误
+title: Hindley-Milner 类型系统的根本性错误
 ---
 
 
