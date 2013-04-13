@@ -18,16 +18,15 @@ H2 {
 }
 
 
-td {
-	border: 1pt lightgrey dashed;
-	vertical-align:text-top;
-	padding: 10pt;
+li {
+    margin-left: 10px;
 }
 
 
 blockquote {
     border-left: 4px lightgrey solid;
     padding-left: 5px;
+    margin-left: 20px;
 }
 
 
