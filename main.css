@@ -1,7 +1,9 @@
 body {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	font-size: 12pt;
-	padding: .6in 1.2in .6in 1.2in;
+	padding: 5% 25% 5% 25%;
+  width: 50%;
+
 }
 
 li {
@@ -24,9 +26,7 @@ pre {
     font-size: 80%;
     border: solid 1px #CC929A;
     background-color: LightGrey;
-    padding: .2em;
-    width: 60em;
-    margin-left: 1.8em;
+    padding: .1em;
 }
 
 div {
