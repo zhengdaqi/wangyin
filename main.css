@@ -11,6 +11,7 @@ body {
 
 H2 {
     font-family: "SimSun", "STKai", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    margin-bottom: 60px;
     margin-bottom: 40px;
     padding: 5px;
     border-bottom: 2px LightGrey solid;
@@ -21,6 +22,7 @@ H2 {
 
 H3 {
     font-family: "SimSun", "STKai", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    margin-top: 40px;
     margin-bottom: 30px;
     border-bottom: 1px LightGrey solid;
     width: 80%;
