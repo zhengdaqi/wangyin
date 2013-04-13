@@ -10,6 +10,22 @@ Scheme 的配置有很多种方式，我不想介绍太多东西，免得有人�
 
 现在我就一步一步的介绍我的配置。
 
+``` scheme
+; factorial
+((eval
+  (cps
+   '(lambda (n)
+      ((lambda (fact)
+         ((fact fact) n))
+       (lambda (fact)
+         (lambda (n)
+           (if (zero? n)
+               1
+               (* n ((fact fact) (sub1 n))))))))))
+ 5
+ (lambda (v) v))
+```
+
 
 ### 安装 Scheme
 
