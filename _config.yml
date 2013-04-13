@@ -1,1 +1,7 @@
-baseurl: /
+destination: ./_site
+auto:        true
+pygments:    true
+markdown:    rdiscount
+permalink:   date
+rdiscount:
+  extensions: [smart]
