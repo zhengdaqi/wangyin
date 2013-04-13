@@ -1,9 +1,41 @@
-destination: ./_site
-auto:        true
-lsi:         false
-server_port: 4000
-pygments:    true
-markdown:    rdiscount
-permalink:   date
-rdiscount:
-  extensions: [smart]
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://blog.yinwang.org
+title: Yin Wang's Blog
+author: Yin Wang
+simple_search: http://google.com/search
+description:
+
+# Default date format is "ordinal" (resulting in "July 22nd 2007")
+# You can customize the format as defined in
+# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
+# Additionally, %o will give you the ordinal representation of the day
+date_format: "ordinal"
+
+# RSS / Email (optional) subscription links (change if using something like Feedburner)
+subscribe_rss: /atom.xml
+subscribe_email:
+# RSS feeds can list your email address if you like
+email:
+
+# ----------------------- #
+#    Jekyll & Plugins     #
+# ----------------------- #
+
+# If publishing to a subdirectory as in http://site.com/project set 'root: /project'
+root: /
+permalink: /blog/:year/:month/:day/:title/
+source: source
+destination: public
+plugins:
+code_dir:
+category_dir: blog/categories
+markdown: rdiscount
+pygments: false # default python pygments have been replaced by pygments.rb
+
+paginate: 10          # Posts per page on the blog index
+pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
+recent_posts: 5       # Posts in the sidebar Recent Posts section
+excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
