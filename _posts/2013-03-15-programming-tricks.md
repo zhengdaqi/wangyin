@@ -47,14 +47,14 @@ title: 程序设计里的“小聪明”
 
 1. Google 公司的代码规范里面规定，在任何情况下 for 语句和 if 语句之后必须写花括号，即使 C 和 Java 允许你在其只包含一行代码的时候省略它们。比如，你不能这样写
 
-    for (int i=0; i < n; i++)
-       some_function(i);
+       for (int i=0; i < n; i++)
+          some_function(i);
 
-而必须写成
+   而必须写成
 
-    for (int i=0; i < n; i++) {
-      some_function(i);
-    }    
+        for (int i=0; i < n; i++) {
+          some_function(i);
+        }    
 
 请分析：这样多写两个花括号，是好还是不好？
 
@@ -63,18 +63,18 @@ title: 程序设计里的“小聪明”
 
 2. 当我第二次到 Google 实习的时候，发现我一年前给他们写的代码，很多被调整了结构。几乎所有如下结构的代码：
 
-    if (condition) {
-      return x;
-    } else {
-      return y;
-    }    
+        if (condition) {
+          return x;
+        } else {
+          return y;
+        }      
 
-都被人改成了：
+   都被人改成了：
 
-    if (condition) {
-      return x;
-    }
-    return y;
+        if (condition) {
+          return x;
+        }
+        return y;
 
 请问这里省略了一个 `else` 和两个花括号，会带来什么好处或者坏处？
 
