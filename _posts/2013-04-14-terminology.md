@@ -58,3 +58,14 @@ title: 几个超炫的专业词汇
   ![](http://www.yinwang.org/images/jenga-code.jpg)
 
   当你加上一小块代码之后，就整个垮掉的那种代码。（Jenga是一种玩具，如图）
+
+
+* Higgs-Bugson
+
+  一个假想中的bug。它一般是跟据运行日志的少数记录和零星含糊的用户报告推测出来，但是在开发员的机器上很难重现。
+
+
+* Heisenbug
+
+  当你试图分析它的时候就立即消失或者改变行为特征的bug。
+
