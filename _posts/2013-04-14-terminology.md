@@ -22,7 +22,7 @@ title: 几个超炫的专业词汇
 
 * Mental Speedbump（头脑减速杠）
 
-![](http://www.yinwang.org/images/speedbump.jpeg)
+  ![](http://www.yinwang.org/images/speedbump.jpeg)
 
   由于设计的不协调性造成的用户的注意力分散。比如，很多软件喜欢弹出一个窗口问你“是否继续？”
 
