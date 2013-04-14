@@ -28,7 +28,10 @@ title: 几个超炫的专业词汇
       theSky = "blue";
       if (theSky) ...
 
-  更近一步。`if (theSky) ...` 其实也是一个先辈的罪过。其实应该写成 `if (theSky != NULL) ...`
+  更近一步。`if (theSky) ...` 其实也是一个先辈的罪过。其实应该写成：
+
+      theSky = "blue";
+      if (theSky != NULL) ...
 
 
 * Mental Speedbump（头脑减速杠）
