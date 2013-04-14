@@ -81,6 +81,11 @@ a:hover {
 }
 
 
+img {
+    margin-left: 20px;
+}
+
+
 hr {
     color: LightGrey;
 }
