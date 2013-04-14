@@ -1,5 +1,5 @@
 ---
-laytout: default
+layout: default
 title: 谈程序的“通用性”
 ---
 
