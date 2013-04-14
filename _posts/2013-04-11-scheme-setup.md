@@ -151,6 +151,6 @@ ParEdit mode 是一个很特殊的模式。它起作用的时候，你不能直�
 
 然后再打开 Scheme 代码的时候，你就会看到是这个样子：
 
-![](http://www.yinwang.org/images/scheme-paren.jpeg)
+<img src="http://www.yinwang.org/images/scheme-paren.jpeg" width="80%">
 
 好了，这就是我写 Scheme 的所有配置了。希望这些有所帮助。
