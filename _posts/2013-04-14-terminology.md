@@ -52,3 +52,9 @@ title: 几个超炫的专业词汇
     ![](http://www.yinwang.org/images/workaround.png)
 
   因为开发过程的失败而让用户必须进行的一些操作。这些通常是设计失误。
+
+* Jenga Code
+
+  ![](http://www.yinwang.org/images/jenga-code.png)
+
+  当你加上一小块代码之后，就整个垮掉的那种代码。（Jenga是一种玩具，如图）
