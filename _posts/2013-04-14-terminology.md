@@ -41,8 +41,12 @@ title: 几个超炫的专业词汇
 
 * Katrina Effect（卡特里娜飓风效应）
 
+  ![](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTU8qb9teH69EX14q2t2Y9hrW836MXxTWE7bN9Q2AQ-e9vpSLMB)
+
   这个词描述的是一种飓风过后完全重头来过的悲惨景象。这种现象现在经常出现在重装或者升级软件之后，或者 Windows 安装完软件之后要你重启机器（关掉所有窗口）。
 
 * Wordaround
+
+    ![](http://www.yinwang.org/images/workaround.png)
 
   因为开发过程的失败而让用户必须进行的一些操作。这些通常是设计失误。
