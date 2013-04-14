@@ -47,6 +47,3 @@ title: 谈程序的“通用性”
 
 
 所以在设计程序的时候，我们最好是先把手上的问题解决好。如果发现这段代码还可以被用在很多别的地方，到时候再把“框架”从中抽象出来也不迟。
-
-
-http://www.snopes.com/business/genius/spacepen.asp
