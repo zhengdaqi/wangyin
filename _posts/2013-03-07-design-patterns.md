@@ -33,7 +33,7 @@ GoF 借鉴的是一个叫 Christopher Alexander 的建筑师的做法。Alexande
 这不是我的一家之言，Peter Norvig 在 1998 年就做了一个演讲，指出在“动态语言”里面，GoF 的20几个模式，其中绝大部分都“透明”了。也就是说，你根本感觉不到它们的存在。这就像我刚才告诉你的。
 
 
-![Norvig talk](http://www.yinwang.org/images/norvig-patterns.jpeg)
+![Norvig talk](http://www.yinwang.org/images/norvig-patterns.png)
 
 
 在这里 Norvig 的观点是正确的，不过需要小心一个概念错误。Norvig 对“静态语言”的概念是有局限性的。有的静态语言其实也能传递函数作为参数，而且不像 Java 那样什么都得放进 class 里。这样的静态语言，其实也可以避免大部分 GoF 设计模式。而“动态语言”这个概念，在程序语言的理论里面，其实是没有明确的定义的。“动态语言”其实也能进行某些“静态类型检查”。不过在 1998 年，我还是个啥都不懂的屁孩，所以这里就不跟 Norvig 大叔计较了。
