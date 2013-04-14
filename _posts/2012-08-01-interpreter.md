@@ -146,7 +146,7 @@ title: 怎样写一个解释器
 lambda calculus 不同于普通语言的另外一个特点就是它没有数字等基本的数据类型，所以你不能直接用 lambda calculus 来计算像 (+ 1 2) 这样的表达式。但是有意思的是，数字却可以被 lambda calculus 的三个基本元素“编码”(encoding) 出来。这种编码可以用来表示自然数，布尔类型，pair，list，以至于所有的数据结构。它还可以表示 if 条件语句等复杂的语法结构。常见的一种这样的编码叫做 Church encoding。所以 lambda calculus 其实可以产生出几乎所有程序语言的功能。中国的古话“三生万物”，也许就是这个意思。
 
 
-求值顺序，call-by-name, call-by-value
+### 求值顺序，call-by-name, call-by-value
 
 当解释一个程序的时候，我们可以有好几种不同的“求值顺序”(evaluation order)。这有点像遍历二叉树有好几种不同的顺序一样（中序，前序，后序）。只不过这里的顺序更加复杂一些。比如下面的程序：
 
