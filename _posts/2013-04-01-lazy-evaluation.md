@@ -35,3 +35,5 @@ title: 谈惰性求值
 虽然惰性求值不能给我们带来直接的益处，但它背后的理论思想却可以启发另外的设计。如果你想真的了解惰性求值的原理，可以先看一下我写的一个惰性求值的解释器。看看如何在不到 40 行代码之内，实现 Haskell 语义的精髓：
 
 [https://github.com/yinwang0/gems/blob/master/interp-lazy.rkt](https://github.com/yinwang0/gems/blob/master/interp-lazy.rkt)
+
+这段代码的工作原理，我以后再专门写文章讲解。
