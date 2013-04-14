@@ -8,6 +8,9 @@ title: 几个超炫的专业词汇
 
 * Yoda Notation（Yoda 表示法）
 
+  ![](http://www.yinwang.org/images/yoda-notation.jpeg)
+
+
   在 C/C++ 里面使用这样的表达式顺序：
 
       if ("blue" == theSky) ...
