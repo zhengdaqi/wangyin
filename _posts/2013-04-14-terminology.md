@@ -28,7 +28,7 @@ title: 几个超炫的专业词汇
 
   用于让用户安全绕过早期的设计缺陷所采用的特殊行为准则。与真正的珍珠相比，它们不是那么好看。（请参考“Sins of our Forefathers”）。
 
-* Sins of our Forefathers
+* Sins of our Forefathers（先辈的罪过）
 
   在当时看起来有逻辑并且合理的传奇式的设计，最后回顾起来却很傻b。与 Pearl 相比，这些是有意识的加进去的，而不是不小心的错误。但是这两者都会造成“变通”（workaround）。
 
