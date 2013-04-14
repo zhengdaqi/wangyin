@@ -55,6 +55,6 @@ title: 几个超炫的专业词汇
 
 * Jenga Code
 
-  ![](http://www.yinwang.org/images/jenga-code.png)
+  ![](http://www.yinwang.org/images/jenga-code.jpg)
 
   当你加上一小块代码之后，就整个垮掉的那种代码。（Jenga是一种玩具，如图）
