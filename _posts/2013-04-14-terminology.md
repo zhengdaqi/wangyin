@@ -47,7 +47,7 @@ title: 几个超炫的专业词汇
 
   这个词描述的是一种飓风过后完全重头来过的悲惨景象。这种现象现在经常出现在重装或者升级软件之后，或者 Windows 安装完软件之后要你重启机器（关掉所有窗口）。
 
-* Workaround
+* Workaround（变通）
 
     ![](http://www.yinwang.org/images/workaround.png)
 
