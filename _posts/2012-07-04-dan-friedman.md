@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Chez Scheme 的传说
-
+title: GTF: Great Teacher Friedman
+---
 
 ### 写小人书的老顽童
 
