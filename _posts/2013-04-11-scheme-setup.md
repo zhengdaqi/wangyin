@@ -24,7 +24,7 @@ Petite 是一个完善的，高效的实现，你可以把它当成解释器使�
 
 所以如果你想写稍微大点的东西，可以用 Racket。它可以在这里下载：
 
-[http://racket-lang.org](http://racket-lang.org)
+<http://racket-lang.org>
 
 安装应该很容易。Ubuntu 也自带了 Racket，所以可以直接让系统安装它。
 
@@ -36,7 +36,7 @@ Petite 是一个完善的，高效的实现，你可以把它当成解释器使�
 
 ParEdit mode 可以在这里下载：
 
-[http://mumble.net/~campbell/emacs/paredit.el](http://mumble.net/~campbell/emacs/paredit.el)
+<http://mumble.net/~campbell/emacs/paredit.el>
 
 下载之后，把它放到一个目录里，比如 ~/.emacs.d，然后打开 ~/.emacs 配置文件，加入如下设置：
 
@@ -142,7 +142,7 @@ ParEdit mode 是一个很特殊的模式。它起作用的时候，你不能直�
 
 你只需要下载这个 el，放到你的 .emacs.d:
 
-[https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el](https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el)
+<https://www.dropbox.com/s/v0ejctd1agrt95x/parenface.el>
 
 然后在 .emacs 里面加入两行：
 
