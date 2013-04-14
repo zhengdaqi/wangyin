@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GTF: Great Teacher Friedman
+title: GTF - Great Teacher Friedman
 ---
 
 ### 写小人书的老顽童
