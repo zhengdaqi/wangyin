@@ -16,7 +16,7 @@ Scheme 的配置有很多种方式，我不想介绍太多东西，免得有人�
 
 世界上最好的 Scheme 实现是 Chez Scheme，但是它不免费也不开源。所以如果你不想破费，那就只好下载一个它的“免费版”，叫做 Petite Chez Scheme（petite 是法语里“小”的意思）。它可以在这里下载：
 
-[http://scheme.com/download](http://scheme.com/download)
+<http://scheme.com/download>
 
 这个页面挺长，上面都是正式版的 Chez Scheme，一点击就会叫你“联系销售人员”。要滚动到下面才能看见免费的版本。怎么安装我就不讲了，自己看说明应该很容易的。
 
