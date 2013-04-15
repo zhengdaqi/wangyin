@@ -37,3 +37,5 @@ title: Yoda 表示法错在哪里
 
     theSky = "blue";
     if (theSky != NULL) ...
+
+显然这样一来，之前的那种错误就完全不可能出现了，我们也就根本没必要用 Yoda 表示法了。
