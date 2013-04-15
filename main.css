@@ -84,13 +84,6 @@ img {
 }
 
 
-img.displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
 hr {
     color: LightGrey;
 }
