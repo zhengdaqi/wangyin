@@ -76,4 +76,4 @@ title: 几个超炫的专业词汇
 
   <img src="http://www.yinwang.org/images/heisenbug.png">
 
-  当你试图分析它的时候就突然消失或者改变行为特征的 bug。
+  当你试图观察它的时候就突然消失或者改变行为特征的 bug。
