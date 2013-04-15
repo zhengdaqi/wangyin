@@ -79,13 +79,15 @@ a:hover {
 }
 
 
-img.displayed {
-    align: "center";
+img {
+    margin-left: 10px;
 }
 
 
-img {
-    margin-left: 10px;
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
