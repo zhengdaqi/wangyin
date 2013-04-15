@@ -35,7 +35,7 @@ title: Yoda 表示法错在哪里
     theSky = "blue";
     if (theSky) ...
 
-更近一步。`if (theSky) ...` 这个写法其实也是一个先辈的罪。theSky 的类型是字符串，它不应该可以直接被作为 bool 使用。`if (...)` 的条件应该必须是一个 bool。 所以这里其实应该写成：
+更近一步。`if (theSky)` 这个写法其实也是一个先辈的罪。theSky 的类型是字符串，它不应该可以直接被作为 bool 使用。`if (...)` 的条件应该必须是一个 bool。 所以这里其实应该写成：
 
     theSky = "blue";
     if (theSky != NULL) ...
