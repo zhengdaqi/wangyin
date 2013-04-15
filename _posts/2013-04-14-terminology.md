@@ -21,7 +21,7 @@ title: 几个超炫的专业词汇
 
   “Yoda 表示法”的名字来源于《星球大战》的 Yoda 大师。他说话的单词顺序相当奇特，比如：“Backwards it is, yes!”
 
-  同事认为：使用这个表示法是为了“变通”（wordaround） C/C++ 的一个设计抉择：使用 `=` 来表示赋值，而使用 `==` 来表示比较。这个设计充分的展现了“先辈的罪过”（Sins of our Forefathers）这一词汇的精髓。
+  同事认为：使用这个表示法是为了“变通”（wordaround） C/C++ 的一个设计抉择：使用 `=` 来表示赋值，而使用 `==` 来表示比较。这个设计充分的展现了“先辈的罪”（Sins of our Forefathers）这一词汇的精髓。
 
   关于 Yoda 表示法我有不同的见解，请参考《[Yoda 表示法错在哪里](http://www.yinwang.org/blog-cn/2013/04/14/yoda-notation)》。
 
@@ -42,13 +42,13 @@ title: 几个超炫的专业词汇
 
   （请比较：Sins of our Forefathers）
 
-* Sins of our Forefathers（先辈的罪过）
+* Sins of our Forefathers（先辈的罪）
 
   ![](http://www.yinwang.org/images/sins-fathers.jpeg)
 
   当时看起来合乎逻辑并且合情合理最后回顾起来却很傻b的历史遗留设计。
 
-  与“珍珠”相比，这些是有意识的加进去的，而不是不小心的错误，虽然这两者都会造成“变通”（workaround）。
+  与“珍珠”相比，这些是有意识的加进去的，而不是不小心造成的，虽然这两者都会造成“变通”（workaround）。
 
 * Katrina Effect（卡特里娜飓风效应）
 
