@@ -1,6 +1,6 @@
 root: /
 permalink: /blog-cn/:year/:month/:day/:title
-markdown: rdiscount
+# markdown: rdiscount
 pygments: true
 date_format: "ordinal"
 subscribe_rss: /atom.xml
