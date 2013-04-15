@@ -68,8 +68,8 @@ code {
 a {
     text-decoration: none;
     cursor: crosshair;
-    background-color: #FAFAF2;
-    border: 1px dashed #7AFAD2; 
+    border: 1px dashed Red;
+    color: black;
 }
 
 
