@@ -34,7 +34,7 @@ title: 几个超炫的专业词汇
 
   ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQbEqd7J07hkpTtp4Kz1njGM0GAo0_v7CFn04vLtfUtjUK7X5eSxQ)
 
-  由于早期的设计缺陷，而让用户不得不采用的“变通方案”或者“附加过程”。它们其实没有珍珠那么好看。（请比较：Sins of our Forefathers）
+  珍珠是怎么形成的？是由于脏东西不小心掉进了蚌壳里面。在软件里面也有很多这样的“珍珠”。由于早期的缺陷，用户不得不采用一些“变通方案”（workaround）或者“附加过程”。久而久之，这些变通变成了教条，貌似它们是每个人都应该做的似的。虽然产生于同样的原理，软件里的“珍珠”远远没有真正的珍珠那么好看。（请比较：Sins of our Forefathers）
 
 * Sins of our Forefathers（先辈的罪过）
 
