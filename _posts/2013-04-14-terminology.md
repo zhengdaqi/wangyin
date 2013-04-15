@@ -65,15 +65,15 @@ title: 几个超炫的专业词汇
   Jenga 是一种非常流行的 party 玩具，如图。它的工作原理是，先把那些小木条堆成一个规则的塔。然后参加游戏的人轮流从下面抽出一块（只能用一只手），然后放在最上面。谁放上之后木塔垮掉了，谁就“胜利”了。然后这个人就要做其他人想出来的一些整蛊的事情。
 
 
-* Higgs-Bugson
+* <a href="http://en.wikipedia.org/wiki/Higgs_boson">Higgs-Bugson</a>
 
-  <a href="http://en.wikipedia.org/wiki/Higgs_boson"><img src="http://www.yinwang.org/images/higgs-boson.jpg"></a>
+  <img src="http://www.yinwang.org/images/higgs-boson.jpg">
 
   一种假想中的 bug。它一般是跟据运行日志的少数记录和零星含糊的用户报告推测出来，但是在开发员的机器上很难重现。
 
 
-* Heisenbug
+* <a href="http://en.wikipedia.org/wiki/Heisenberg_uncertainty_principle">Heisenbug</a>
 
-  <a href="http://en.wikipedia.org/wiki/Heisenberg_uncertainty_principle"><img src="http://www.yinwang.org/images/heisenbug.png"></a>
+  <img src="http://www.yinwang.org/images/heisenbug.png">
 
   当你试图分析它的时候就突然消失或者改变行为特征的 bug。
