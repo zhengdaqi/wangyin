@@ -1,6 +1,8 @@
 ---
 layout: default
 title: 几个超炫的专业词汇
+published: false
+tags: programming
 ---
 
 从同事的[博客](http://thomas.tuerke.net/on/design/?thread=-701829031)上学会了几个超炫的专业词汇，激动不已。觉得这些词汇可以言简意赅的概括我的好几篇博文，自己的文章水准真是自愧不如。现在来见识一下真正大师级的英语词汇：
