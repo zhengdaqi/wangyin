@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 几个超炫的专业词汇
-published: false
+published: true
 tags: programming
 ---
 
