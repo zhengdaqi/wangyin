@@ -19,7 +19,7 @@ layout: nil
     <id>http://www.yinwang.org{{ post.id }}</id>
     <link type="text/html" rel="alternate" href="http://www.yinwang.org{{ post.url }}"/>
     <title>{{ post.title | xml_escape }}</title>
-    <updated>{{ post.time | date_to_xmlschema }}</updated>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
     <author>
       <name>Yin Wang</name>
       <uri>http://www.yinwang.org</uri>
