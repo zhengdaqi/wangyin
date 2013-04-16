@@ -5,7 +5,7 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
   <title>http://www.yinwang.org</title>
-  <link href="http://www.yinwang.org"/>
+  <link href="http://www.yinwang.org/"/>
   <link type="application/atom+xml" rel="self" href="http://www.yinwang.org/atom.xml"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>http://www.yinwang.org/</id>
@@ -22,7 +22,7 @@ layout: nil
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <author>
       <name>Yin Wang</name>
-      <uri>http://www.yinwang.org</uri>
+      <uri>http://www.yinwang.org/</uri>
     </author>
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
