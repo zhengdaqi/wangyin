@@ -52,7 +52,7 @@ Scheme 停止把 `nil` 作为“假”，却仍然把不是 `#f` 的值全都作
 
 有些人从小写 C++，一辈子都在写 C++。这样的结果是，他们对 C++ 里面的“[珍珠](http://www.yinwang.org/blog-cn/2013/04/14/terminology)”掌握的非常牢靠，以至于出现了一种“脑残”的现象——他们没法再写出逻辑清晰的程序。
 
-比如，很多 C++ 程序员很精通 functor 的写法，可是其实 functor 只是由于 C++ 没有 first-class function 而造成的“变通”。然而 C++ 的 functor，却永远也不可能像 Scheme 的 lambda 函数一样好用。因为每次需要一个 functor 你都得定义一个新的 class，然后制造这个 class 的对象。如果函数里面有自由变量，那么这些自由变量必须通过构造函数放进 functor 的 field 里面，这样当 functor 内部的“主方法”被调用的时候，它才知道自由变量的值。
+比如，很多 C++ 程序员很精通 functor 的写法，可是其实 functor 只是由于 C++ 没有 first-class function 而造成的“变通”。C++ 的 functor 永远也不可能像 Scheme 的 lambda 函数一样好用。因为每次需要一个 functor 你都得定义一个新的 class，然后制造这个 class 的对象。如果函数里面有自由变量，那么这些自由变量必须通过构造函数放进 functor 的 field 里面，这样当 functor 内部的“主方法”被调用的时候，它才知道自由变量的值。
 
 这些“精通” functor 的 C++ 程序员，认为会用 functor 就说明自己水平高。殊不知 functor 这东西不但是一个“变通”，而且是从函数式语言里面“学”过来的。在最早的时候，C++ 程序员其实是不知道 functor 这东西的。如果你考一下古就会发现，C++ 诞生于 1983 年，而 Scheme 诞生于 1975 年，Lisp 诞生于 1958 年。Scheme 比 C++ 的出现整整早了8年，然而 Scheme 一开始就有 lexical scoping 的 lambda。这种 lambda，不但可以完全取代 functor，而且比它方便强大很多。所以 C++ 后来加进去的一些东西，只不过是东施效颦而已。
 
