@@ -34,7 +34,7 @@ Scheme 停止把 `nil` 作为“假”，却仍然把不是 `#f` 的值全都作
 
 而不是：
 
-    (let ([found (find-first-non-false x y z)])
+    (let ([found (first-non-false x y z)])
       (cond
        [(not (eq? found #f))
         (do-something-with found)]))
