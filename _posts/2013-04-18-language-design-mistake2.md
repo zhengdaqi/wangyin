@@ -7,7 +7,7 @@ title: 程序语言的常见设计错误(2) - 试图容纳世界
 
 今天我要说的错误倾向叫做“试图容纳世界”。这个错误导致了 Python，Ruby 和 JavaScript 等“动态语言”里面的一系列问题。Scheme 也算是“动态语言”，但是 Scheme 是一种非常严谨的语言，它直接源自计算机科学的源头 lambda calculus，比 C++，Java 都要严谨很多。所以我一般都避免把 Scheme 和 JavaScript 等语言相提并论，以免贬低 Scheme 的身份。
 
-实际上很多语言的设计者其实都是门外汉，根本没经过严格的训练，所以才会犯一些低级错误，却又自大得要命。比如有一阵子 Python 的创造者 Guido 在 blog 上扬言要把 lambda 从 Python 里去掉，说 lambda 比起有名字的函数根本没有什么优势，当年 Python 有 lambda 是因为一个 Lisp 程序员坚持，他为了照顾“公共关系”把它放进去了。其实他这样觉得的原因是 Python 里面实现的 lambda 根本就没有真正的 lambda 的能力。
+实际上很多语言的设计者其实都是门外汉，根本没经过严格的训练，所以才会犯一些低级错误，却又自大得要命。比如有一阵子 Python 的创造者 Guido 在 [blog](http://www.artima.com/weblogs/viewpost.jsp?thread=98196) 上扬言要把 lambda 从 Python 里去掉，说 lambda 比起有名字的函数根本没有什么优势，当年 Python 有 lambda 是因为一个 Lisp 程序员坚持，他为了照顾“公共关系”把它放进去了。其实他这样觉得的原因是 Python 里面实现的 lambda 根本就没有真正的 lambda 的能力。
 
 不扯太远了，现在来说说 Python 和 JavaScript 常见的问题吧（Ruby 我不大熟，所以暂时不管它，你们自己用过之后可以对号入座）。我给 Python 写过一个静态分析器，所以我基本上实现了整个 Python 的语义，可以说是对 Python 了解的相当清楚了。如果你想知道这个代码的结构，可以在这里看到它的第一个版本的[源代码](http://hg.python.org/jython/file/11776cd9765b/src/org/python/indexer)。在设计这个静态分析的时候，我发现 Python 的设计让静态分析异常的困难，Python 的程序出了问题很难找到错误的所在，Python 程序的执行速度比大部分程序语言都要慢，这其实是源自 Python 本身的设计问题。这些设计问题，其实大部分出自同一个设计倾向，也就是“试图容纳世界”。
 
