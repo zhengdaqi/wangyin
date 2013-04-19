@@ -34,9 +34,9 @@ Scheme 停止把 `nil` 作为“假”，却仍然把不是 `#f` 的值全都作
 
 而不是：
 
-    (let ([found (or x y z)])
+    (let ([found (find-first-non-false x y z)])
       (cond
-       [found
+       [(not (eq? found #f))
         (do-something-with found)]))
 
 第一段代码使用了 Scheme 的一个特殊“语法”，`=>` 后面的 `(lambda (found) ...)` 会把 `(or x y z)` 返回的值作为它的参数 `found`，然后返回函数计算出的结果。第二段代码没有假设任何不是 `#f` 的值都是“真”，所以它不把 `(or x y z)` 放进 `cond` 的条件里，而是首先把它返回的值绑定到 `found`，然后再把这个值放进 `cond` 的条件。
