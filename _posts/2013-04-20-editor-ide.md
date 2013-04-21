@@ -33,4 +33,4 @@ title: 编辑器与IDE
 
 这种编辑器可以让你直接编辑程序的 AST 结构，而不是停留于文本。它们直接把程序语言保存为结构化的数据（比如 S表达式，XML 或者 JSON），到时候直接通过对 S表达式，XML 或者 JSON 的简单的“解码”，而不需要针对不同的程序语言进行不同的 parse。这对于编程工具来说将是一个革命性的变化。
 
-已经有人设计了这样一种编辑器的模型，并且设计的相当不错。你可以参考一下这个[结构化编辑器](http://blogs.msdn.com/b/kirillosenkov/archive/2009/09/08/first-videos-of-the-structured-editor-prototype.aspx)，它包含一些 Visual Studio 和 Eclipse 都没有的强大功能。
+已经有人设计了这样一种编辑器的模型，并且设计的相当不错。你可以参考一下这个[结构化编辑器](http://blogs.msdn.com/b/kirillosenkov/archive/2009/09/08/first-videos-of-the-structured-editor-prototype.aspx)，它包含一些 Visual Studio 和 Eclipse 都没有的强大功能，却比它们两者都要更加容易实现。
