@@ -33,4 +33,4 @@ title: 编辑器与IDE
 
 已经有人设计了这样一种编辑器的模型，并且设计的相当不错。你可以参考一下这个[结构化编辑器](http://blogs.msdn.com/b/kirillosenkov/archive/2009/09/08/first-videos-of-the-structured-editor-prototype.aspx)，它包含一些 Visual Studio 和 Eclipse 都没有的强大功能，却比它们两者都要更加容易实现。你可以在这个网页上下载这个编辑器模型来试用一下。
 
-我之前推荐过的 [TeXmacs](http://www.yinwang.org/blog-cn/2012/09/18/texmacs) 其实在本质上就是一个“超豪华”的结构化编辑器。你可能不知道，TeXmacs 能够运行 Scheme 代码。
+我之前推荐过的 [TeXmacs](http://www.yinwang.org/blog-cn/2012/09/18/texmacs) 其实在本质上就是一个“超豪华”的结构化编辑器。你可能不知道，TeXmacs 不但能排版出 TeX 的效果，而且能够运行 Scheme 代码。
