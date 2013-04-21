@@ -35,4 +35,6 @@ title: 编辑器与IDE
 
 我之前推荐过的 [TeXmacs](http://www.yinwang.org/blog-cn/2012/09/18/texmacs) 其实在本质上就是一个“超豪华”的结构化编辑器。你可能不知道，TeXmacs 不但能排版出 TeX 的效果，而且能够运行 Scheme 代码。
 
-IntelliJ IDEA 的制造者 JetBrains，也有自己的一个结构化编辑系统，叫做 [MPS](http://www.jetbrains.com/mps)。它是开源软件，并且可以免费下载。
+IntelliJ IDEA 的制造者 JetBrains 做了一个结构化编辑系统，叫做 [MPS](http://www.jetbrains.com/mps)。它是开源软件，并且可以免费下载。
+
+另外，Microsoft Word 的创造者 Charles Simonyi 开了一家叫做 [Intentional Software](http://www.intentsoft.com/intentional-technology/meta) 的公司，也做类似的软件。
