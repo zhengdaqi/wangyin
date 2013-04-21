@@ -130,7 +130,7 @@ Friedman 啊，把这样一个问题作为“智力题”，真有你的！我�
 
 这些题目包括一些很难的问题， 比如 church numeral 的前驱 (predecessor)。这个问题，当年是 Stephen Kleene （图灵的学长） 花了三个月冥思苦想才做出来的。不幸的是我在 Cornell 就学到了 Kleene 的做法，造成了思维的定势，所以这个训练当时对我来说失去了意义。而我们班上却有一个数学系的同学，出人意料的在一个星期之内做出了一个比 Kleene 还要简单的方法。他的完整的代码（用传统的 lambda calculus 语法表示）如下：
 
-    λn w z . ((n λl h . h (l w)) (λd . z)) (λx . x)
+    λn w z. ((n λl h. h (l w)) (λd.z)) (λx.x)
 
 其它的问题包括从 lambda calculus 到 SKI combinator 的编译器，逻辑式（可逆）CPS 变换，实现 Hindley-Milner 类型系统，等等。我发现，就算自认为明白了的东西，经过一番思索，认识居然还可以更进一步。
 
