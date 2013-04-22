@@ -17,14 +17,32 @@
 <p><a href="https://github.com/yinwang0/ydiff">ydiff</a> 是我的一个小实验，用以探索一种全新的程序比较以及版本控制系统。说它是“小实验”的原因是因为实现它所用的技能占不到我头脑 10% 的能力，我花在上面的时间不到一个月。我一直以为已经有其他人做出了类似的系统，可是几年以后我才发现，它所包含的技术对于别人来说的难度出乎我的意料之外。ydiff 到现在仍然是世界上最先进的程序比较系统。它的算法精确性和界面的友好性，大大超过了 <a href="http://www.semdesigns.com/Products/SmartDifferencer">Semantic Design SmartDifferencer</a>, <a href="http://cmpp.coodesoft.com">Compare++</a> 等商业产品。
 
 
+<h3>与 diff 的本质区别</h3>
+
+<p>也许我根本不应该给它起名叫“ydiff”，让人感觉它只不过是对 diff 的微小改进。然而，ydiff 的原理比起 diff，其实是革命性的。如果说 ydiff 的代码里面有一块是 diff 的话，那块代码占据的比重不到 1%。
+
+<p>ydiff 与 diff 的本质区别在于，diff 只是对程序进行基于“文本”的对比，它根本不对程序进行 parse。而 ydiff 含有完整的针对程序语言的 parser，在得到了 AST 之后，才对 AST 进行“结构化的比较”。
+
+<p>这种结构化的程序比较，不但可以避免文件里的“空白字符”引起的肤浅区别，而且可以根据程序的结构，进行更加有意义的对比。比如，ydiff 不会认为字符串 "1000" 和数字 1000 的区别只是多了一对引号。ydiff 在比较函数的时候，首先寻找名字相同的函数（因为你很有可能把函数移动到了另外的位置），而不只是对相同位置的函数进行无谓的对比。
+
+<p>ydiff 含有 C++, JavaScript 和 Lisp 的 parser。这些 parser，包括用于支持这些 parser 的库代码，全都出自我一个人之手。ydiff 不含有任何第三方代码。ydiff 的 parser 技术不依赖于任何第三方工具（比如 ANTLR 或者 YACC）。
+
+
 <h3>界面</h3>
 
-ydiff 有非常友好的浏览界面。跟普通的 diff 程序很不一样，它生成美观的含有 JavaScript 的 HTML 文件，可以直接使用浏览器浏览，并且可以嵌入其它网页，比如像下面这样：
+跟普通 diff 程序的输出不一样，ydiff 生成美观的含有 JavaScript 的 HTML 文件，可以直接使用浏览器浏览，并且可以嵌入其它网页，比如像下面这样：
 
 <p><iframe src="http://www.yinwang.org/resources/mk1-mk2.html" width="96%" height="50%"></iframe>
 
 <br><a href="http://www.yinwang.org/resources/mk1-mk2.html">(单独浏览)</a>
 
+<p>上面的界面有如下特点：
+
+<ol>
+<li>左右窗口同步滚动
+<li>点击白色方框，就可以依据框里的变量进行对齐
+<li>点击之后，左右窗口根据对齐的变量重新“耦合”，同步滚动
+</ol>
 
 <h3>技术</h3>
 
