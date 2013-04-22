@@ -45,4 +45,4 @@ Stroustrup 说：
 
 这也许就是为什么我的一个同事说，他看某些人的 C++ 代码的时候都会带上 OSHA（美国职业安全与健康署）颁发的护目镜。
 
-<img src="http://www.yinwang.org/iamges/osha-goggle.jpg">
+<img src="http://www.yinwang.org/images/osha-goggle.jpg">
