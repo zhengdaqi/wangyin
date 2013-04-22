@@ -47,18 +47,19 @@
 
 <h3>技术</h3>
 
-ydiff 里面含有一些被我低估的先进技术。我曾经认为我只是在模仿或者重新发明某些技术（比如 Haskell 的 <a href="http://www.haskell.org/haskellwiki/Parsec">Parsec</a> 和 Tree Editing Distance）。可是我其实只是看到它们的“原理”，而没有照搬它们的“细节”。我受到了它们的启发，却没有真正的模仿它们。我独立的完成了所有这些程序，所以我的系统里面其实含有独立的创新成分。
+ydiff 里面含有一些被我低估的先进技术。我曾经认为我只是在模仿或者重新发明某些技术（比如 Haskell 的 <a href="http://www.haskell.org/haskellwiki/Parsec">Parsec</a> 和 Tree Editing Distance）。可是我其实只是看到它们的“原理”，而没有照搬它们的“细节”。我受到了它们的启发，却没有真正的模仿它们。我独立的完成了所有这些程序。
+
 
 <p>在我看来，ydiff 里面含有以下一些先进的技术：
 
-
 <h4>一个强大的 parser combinator library</h4>
-
-<img src="http://www.yinwang.org/images/devastator_tf2.jpg" width="50%">
 
 <p>一般编译器的 parser 都使用像 YACC 和 ANTLR 一样的 parser generator。这种方法虽然可行，但是它有一个很大的问题，就是你需要使用另外一种语言和另外一个工具，这样就多了一层“语义”。当你的 parser 出了问题的时候，你不能使用已有的编程工具进行调试，而只能依靠这种 parser 工具所提供的信息。这就是为什么人们都觉得 parser 很难写。有一家叫 <a href="http://www.edg.com">EDG</a> 的公司，专门销售 C++ 的 parser 代码。你可以由此看出 parser 的技术是多么的复杂和混乱。
 
-<p>由于这个原因，很多人的 parser 都是自己手写的。可是手写 parser 相当的费事，而且不模块化。所以函数式语言的社区就出现了 <a href="http://www.haskell.org/haskellwiki/Parsec">Parsec</a> 这样的“parser combinator library”。它的原理是，每一个 parser 都是一个函数，它接受一个字符串，输出一种特定的 AST 结构。比如你可以写出一个很简单的 parser，它只能从字符串里提取一个变量，或者一个数字。可是由于函数式语言可以把函数作为数据，这种小的 parser 可以被一些叫做 parser combiantor 的函数“组合”在一起，形成更大的 parser，就像“组合金刚大力神”一样。当所有这些 parser 组合在一起，它们就可以分析整个程序文本。
+<p>由于这个原因，很多人的 parser 都是自己手写的。可是手写 parser 相当的费事，而且不模块化。所以函数式语言的社区就出现了 <a href="http://www.haskell.org/haskellwiki/Parsec">Parsec</a> 这样的“parser combinator library”。它的原理是，每一个 parser 都是一个函数，它接受一个字符串，输出一种特定的 AST 结构。比如你可以写出一个很简单的 parser，它只能从字符串里提取一个变量，或者一个数字。可是由于函数式语言可以把函数作为数据，这种小的 parser 可以被一些叫做 parser combiantor 的“高阶函数”作为输入，然后把它们“组合”在一起，形成更大的 parser，就像“组合金刚大力神”一样。当所有这些 parser 组合在一起，它们就可以拥有分析整个程序文本的威力。
+
+<img src="http://www.yinwang.org/images/devastator_tf2.jpg" width="50%">
+
 
 <p>我的 parser 库，就是受到了 Parsec 的启发。可是启发归启发，我的库却比 parsec 还好用。使用它，我在一天之内写出了一个 JavaScript 的 parser。两天之后，从这个 JS 的 parser 基础上，我得到了一个 C++ 的 parser。这对于很多人来说都是不可思议的事情，但我觉得他们只不过高估了问题的难度。
 
