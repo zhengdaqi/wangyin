@@ -87,14 +87,12 @@ ydiff 里面含有一些被我低估的先进技术。我曾经认为我只是�
 
 <h4>精确的探测“代码移动”</h4>
 
-<p>不管你在任何位置剪切了一段代码到另外一个地方，ydiff 都能准确的探测到这个动作。比如在上面的代码里面，你也许发现了函数 <code>unify</code> 的主体被移动到了另一个叫做 <code>unify-good</code> 的函数里面。
+<p>不管你在任何位置剪切了一段代码到另外一个地方，ydiff 都能准确的探测到这个动作。比如在上面的代码里面，你也许发现了函数 <code>unify</code> 的主体被移动到了另一个叫做 <code>unify-good</code> 的函数里面。ydiff 能够精确地显示出这个事实：
 
 <img src="http://www.yinwang.org/images/unify-ydiff.png" width="95%">
 
 
 <p>这种对于代码移动的检测，可以让人找到很长时间段内对代码的一切修改。为此我做了一个实验，我用 ydiff 对比了 V8 编译器的一个文件相距两年的变化，得到了非常直观可读的结果。如果你用普通的 diff 来对比它们，恐怕不会看出任何有用的信息。
-
-<p>下面就是我得到的结果：
 
 <p><iframe src="http://www.yinwang.org/resources/d8-3404-d8-8424.html" width="96%" height="50%"></iframe>
 <br><a href="http://www.yinwang.org/resources/d8-3404-d8-8424.html">(单独浏览)</a>
