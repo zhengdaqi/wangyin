@@ -67,18 +67,19 @@ ydiff 里面含有一些被我低估的先进技术。我曾经认为我只是�
 
 <p>我的 C++ parser 只有 600 行代码（不包括空行），而 JS 的 parser 只有 500 行代码。最令人惊奇的事情是，Lisp (S-expression) 的 parser 只有短短十几行代码，以至于我可以把它完整的贴在这里：
 
-    (:: $open
-         (@or (@~ "(") (@~ "[")))
-    (:: $close
-         (@or (@~ ")") (@~ "]")))
-    (:: $non-parens
-         (@and (@! $open) (@! $close)))
-    (::= $parens 'sexp
-         (@seq $open (@* $sexp) $close))
-    (:: $sexp
-        (@+ (@or $parens $non-parens)))
-    (:: $program $sexp)
-
+<pre>
+(:: $open
+     (@or (@~ "(") (@~ "[")))
+(:: $close
+     (@or (@~ ")") (@~ "]")))
+(:: $non-parens
+     (@and (@! $open) (@! $close)))
+(::= $parens 'sexp
+     (@seq $open (@* $sexp) $close))
+(:: $sexp
+    (@+ (@or $parens $non-parens)))
+(:: $program $sexp)
+</pre>
 
 <h4>独一无二的结构化对比算法</h4>
 
