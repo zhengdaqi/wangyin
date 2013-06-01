@@ -1,0 +1,516 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK href="diff.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="nav.js"></script>
+</head>
+<body>
+<div id="left" class="src">
+<pre>
+<a id='leftstart' tid='rightstart'></a>
+
+/////////////////////// debug flag ////////////////////////
+<a id='479' tid='480' class='m'>var</a> <a id='481' tid='482' class='m'>debug</a> <a id='483' tid='484' class='m'>=</a> <a id='485' tid='486' class='m'>false</a>;
+
+
+/////////////////////// adjustable parameters //////////////////
+<a id='471' tid='472' class='m'>var</a> <a id='473' tid='474' class='m'>minStep</a> <a id='475' tid='476' class='m'>=</a> <a id='477' tid='478' class='m'>10</a>;
+<a id='463' tid='464' class='m'>var</a> <a id='465' tid='466' class='m'>nSteps</a> <a id='467' tid='468' class='m'>=</a> <a id='469' tid='470' class='m'>30</a>;
+<a id='455' tid='456' class='m'>var</a> <a id='457' tid='458' class='m'>stepInterval</a> <a id='459' tid='460' class='m'>=</a> <a id='461' tid='462' class='m'>10</a>;
+<span class='d'>var blockRange = 15;</span>                    // how far consider one page blocked
+<span class='d'>var nodeHLColor = &#39;lightgrey&#39;;</span>
+<a id='447' tid='448' class='m'>var</a> <a id='449' tid='450' class='m'>lineHLColor</a> <a id='451' tid='452' class='m'>=</a> <a id='453' tid='454' class='m'>&#39;#FFFF66&#39;</a>;
+<a id='439' tid='440' class='m'>var</a> <a id='441' tid='442' class='m'>lineBlockedColor</a> <a id='443' tid='444' class='m'>=</a> <a id='445' tid='446' class='m'>&#39;#E9AB17&#39;</a>;
+<a id='431' tid='432' class='m'>var</a> <a id='433' tid='434' class='m'>bgColor</a> <a id='435' tid='436' class='m'>=</a> <a id='437' tid='438' class='m'>&#39;&#39;</a>;
+<a id='423' tid='424' class='m'>var</a> <a id='425' tid='426' class='m'>bodyBlockedColor</a> <a id='427' tid='428' class='m'>=</a> <a id='429' tid='430' class='m'>&#39;#FAF0E6&#39;</a>;
+
+
+///////////////////////// globals ////////////////////////
+<a id='105' tid='106' class='m'>var</a> <span class='d'>eventCount</span> <a id='107' tid='108' class='m'>=</a> <a id='109' tid='110' class='m'>0</a>;
+<a id='415' tid='416' class='m'>var</a> <a id='417' tid='418' class='m'>moving</a> <a id='419' tid='420' class='m'>=</a> <a id='421' tid='422' class='m'>false</a>;
+<a id='407' tid='408' class='m'>var</a> <span class='d'>matchId</span> <a id='409' tid='410' class='m'>=</a> <a id='411' tid='412' class='m'>-</a><a id='413' tid='414' class='m'>1</a>;
+<a id='399' tid='400' class='m'>var</a> <span class='d'>matchLineId</span> <a id='401' tid='402' class='m'>=</a> <a id='403' tid='404' class='m'>-</a><a id='405' tid='406' class='m'>1</a>;
+<a id='395' tid='396' class='m'>var</a> <a id='397' tid='398' class='m'>cTimeout</a>;
+
+
+///////////////////////// utilities ///////////////////////
+
+// No Math.sign() in JS?
+<a id='355' tid='356' class='m'>function</a> <a id='357' tid='358' class='m'>sign</a>(<a id='359' tid='360' class='m'>x</a>) {
+    <a id='361' tid='362' class='m'>if</a> (<a id='363' tid='364' class='m'>x</a> <a id='365' tid='366' class='m'>&gt;</a> <a id='367' tid='368' class='m'>0</a>) {
+        <a id='369' tid='370' class='m'>return</a> <a id='371' tid='372' class='m'>1</a>;
+    } <a id='373' tid='374' class='m'>else</a> <a id='375' tid='376' class='m'>if</a> (<a id='377' tid='378' class='m'>x</a> <a id='379' tid='380' class='m'>&lt;</a> <a id='381' tid='382' class='m'>0</a>) {
+        <a id='383' tid='384' class='m'>return</a> <a id='385' tid='386' class='m'>-</a><a id='387' tid='388' class='m'>1</a>;
+    } <a id='389' tid='390' class='m'>else</a> {
+        <a id='391' tid='392' class='m'>return</a> <a id='393' tid='394' class='m'>0</a>;
+    }
+}
+
+
+<a id='341' tid='342' class='m'>function</a> <a id='343' tid='344' class='m'>log</a>(<a id='345' tid='346' class='m'>msg</a>) {
+    <a id='347' tid='348' class='m'>if</a> (<a id='349' tid='350' class='m'>debug</a>) {
+        <a id='351' tid='352' class='m'>console</a>.<a id='353' tid='354' class='m'>log</a><span class='d'>(&quot;[ &quot; + window.name + &quot; ] &quot; + msg)</span>;
+    }
+}
+
+
+///////////////////// window scrolling stuff ////////////////////
+
+// accessing other window
+<span class='d'>if (window.name == &#39;left&#39;) {
+    otherside = parent.right;
+} else {
+    otherside = parent.left;
+}</span>
+
+<a id='321' tid='322' class='m'>function</a> <a id='323' tid='324' class='m'>elementPosition</a>(<a id='325' tid='326' class='m'>id</a>) {
+    <span class='d'>obj = document.getElementById(id);</span>
+    <a id='327' tid='328' class='m'>var</a> <a id='329' tid='330' class='m'>curleft</a> <a id='331' tid='332' class='m'>=</a> <a id='333' tid='334' class='m'>0</a>, <a id='335' tid='336' class='m'>curtop</a> <a id='337' tid='338' class='m'>=</a> <a id='339' tid='340' class='m'>0</a>;
+
+    <a id='269' tid='270' class='m'>if</a> (<a id='271' tid='272' class='m'>obj</a> <a id='273' tid='274' class='m'>&&</a> <a id='275' tid='276' class='m'>obj</a>.<a id='277' tid='278' class='m'>offsetParent</a>) {
+        <a id='279' tid='280' class='m'>curleft</a> <a id='281' tid='282' class='m'>=</a> <a id='283' tid='284' class='m'>obj</a>.<a id='285' tid='286' class='m'>offsetLeft</a>;
+        <a id='287' tid='288' class='m'>curtop</a> <a id='289' tid='290' class='m'>=</a> <a id='291' tid='292' class='m'>obj</a>.<a id='293' tid='294' class='m'>offsetTop</a>;
+
+        <a id='295' tid='296' class='m'>while</a> (<a id='297' tid='298' class='m'>obj</a> <a id='299' tid='300' class='m'>=</a> <a id='301' tid='302' class='m'>obj</a>.<a id='303' tid='304' class='m'>offsetParent</a>) {
+            <a id='305' tid='306' class='m'>curleft</a> <a id='307' tid='308' class='m'>+=</a> <a id='309' tid='310' class='m'>obj</a>.<a id='311' tid='312' class='m'>offsetLeft</a>;
+            <a id='313' tid='314' class='m'>curtop</a> <a id='315' tid='316' class='m'>+=</a> <a id='317' tid='318' class='m'>obj</a>.<a id='319' tid='320' class='m'>offsetTop</a>;
+        }
+    }
+
+    <a id='209' tid='210' class='m'>return</a> { <a id='211' tid='212' class='m'>x</a>: <a id='213' tid='214' class='m'>curleft</a>, <a id='215' tid='216' class='m'>y</a>: <a id='217' tid='218' class='m'>curtop</a> };
+}
+
+
+/*
+ * Scroll the window to relative position, detecting blocking positions.
+ */
+<span class='d'>function</span> <span class='d'>scrollWithBlockCheck</span>(<span class='d'>distX, distY</span>) {
+    <span class='d'>var oldTop = document.body.scrollTop;</span>
+    <span class='d'>var oldLeft = document.body.scrollLeft;</span>
+
+    <span class='d'>eventCount++;</span>
+    <span class='d'>window.scrollBy(distX, distY);</span>      // the ONLY place for actual scrolling
+
+    <span class='d'>var actualX = document.body.scrollLeft - oldLeft;</span>    
+    <span class='d'>var actualY = document.body.scrollTop - oldTop;</span>
+    <a id='253' tid='254' class='m'>log</a>(<a id='255' tid='256' class='m'>&quot;distY=&quot;</a> <a id='257' tid='258' class='m'>+</a> <a id='259' tid='260' class='m'>distY</a> <a id='261' tid='262' class='m'>+</a> <a id='263' tid='264' class='m'>&quot;, actualY=&quot;</a> <a id='265' tid='266' class='m'>+</a> <a id='267' tid='268' class='m'>actualY</a>);
+
+    // extra leewaw here because Chrome scrolling is horribly inacurate
+    <a id='219' tid='220' class='m'>if</a> ((<a id='221' tid='222' class='m'>Math</a>.<a id='223' tid='224' class='m'>abs</a>(<a id='225' tid='226' class='m'>distX</a>) <a id='227' tid='228' class='m'>&gt;</a> <a id='229' tid='230' class='m'>blockRange</a> <span class='d'>&&</span> <span class='d'>actualX == 0</span>)
+        <a id='231' tid='232' class='m'>||</a> <a id='233' tid='234' class='m'>Math</a>.<a id='235' tid='236' class='m'>abs</a>(<a id='237' tid='238' class='m'>distY</a>) <a id='239' tid='240' class='m'>&gt;</a> <a id='241' tid='242' class='m'>blockRange</a> <span class='d'>&&</span> <span class='d'>actualY == 0</span>) {
+        <a id='243' tid='244' class='m'>log</a>(<a id='245' tid='246' class='m'>&quot;blocked&quot;</a>);
+        <span class='d'>eventCount--;</span>
+        <span class='d'>document.body.style.backgroundColor = bodyBlockedColor;</span>
+        <span class='d'>putHighlight(matchLineId, lineBlockedColor);</span>
+        <span class='d'>with (otherside) {
+            putHighlight(matchLineId, lineBlockedColor);
+        }</span>
+        <a id='183' tid='184' class='m'>return</a> <a id='185' tid='186' class='m'>true</a>;
+    } <a id='247' tid='248' class='m'>else</a> {
+        <span class='d'>document.body.style.backgroundColor = bgColor;</span>
+        <span class='d'>otherside.document.body.style.backgroundColor = bgColor;</span>
+        <span class='d'>putHighlight(matchLineId, lineHLColor);</span>
+        <span class='d'>with (otherside) {
+            putHighlight(matchLineId, lineHLColor);
+        }</span>
+        <a id='249' tid='250' class='m'>return</a> <a id='251' tid='252' class='m'>false</a>;
+    }
+}
+
+
+/*
+ * timed animation function for scrolling the current window
+ */
+<span class='d'>function</span> <span class='d'>matchWindow</span>(<span class='d'>n</span>)
+{
+    <a id='203' tid='204' class='m'>moving</a> <a id='205' tid='206' class='m'>=</a> <a id='207' tid='208' class='m'>true</a>;
+
+    <span class='d'>var linkPos = otherside.elementPosition(otherside.matchId).y;</span>
+    <span class='d'>var linkOffset = linkPos - otherside.document.body.scrollTop;</span>
+    <span class='d'>var targetPos = document.body.scrollTop + linkOffset</span>
+    <span class='d'>var curPos = elementPosition(matchId).y;</span>
+    <span class='d'>var distY = curPos - targetPos;</span>
+    <span class='d'>var distX = otherside.document.body.scrollLeft
+        - document.body.scrollLeft;</span>
+
+    <a id='187' tid='188' class='m'>log</a>(<a id='189' tid='190' class='m'>&quot;matching window... &quot;</a> <a id='191' tid='192' class='m'>+</a> <a id='193' tid='194' class='m'>n</a> <a id='195' tid='196' class='m'>+</a> <a id='197' tid='198' class='m'>&quot; distY=&quot;</a> <a id='199' tid='200' class='m'>+</a> <a id='201' tid='202' class='m'>distY</a>);
+
+    <span class='d'>if</span> <span class='d'>(distY == 0 && distX == 0)</span> <span class='d'>{
+        moving = false;
+    }</span> <span class='d'>else</span> <span class='d'>if</span> (<a id='145' tid='146' class='m'>n</a> <a id='147' tid='148' class='m'>&lt;=</a> <a id='149' tid='150' class='m'>1</a>) {
+        <span class='d'>scrollWithBlockCheck(distX, distY);</span>
+        <a id='163' tid='164' class='m'>moving</a> <a id='165' tid='166' class='m'>=</a> <a id='167' tid='168' class='m'>false</a>;        
+    } <span class='d'>else</span>{
+        <a id='111' tid='112' class='m'>var</a> <a id='113' tid='114' class='m'>stepSize</a> <a id='115' tid='116' class='m'>=</a> <a id='117' tid='118' class='m'>Math</a>.<a id='119' tid='120' class='m'>floor</a>(<a id='121' tid='122' class='m'>Math</a>.<a id='123' tid='124' class='m'>abs</a>(<a id='125' tid='126' class='m'>distY</a>) <a id='127' tid='128' class='m'>/</a> <a id='129' tid='130' class='m'>n</a>);
+        <a id='83' tid='84' class='m'>actualMinStep</a> <a id='85' tid='86' class='m'>=</a> <a id='87' tid='88' class='m'>Math</a>.<a id='89' tid='90' class='m'>min</a>(<a id='91' tid='92' class='m'>minStep</a>, <a id='93' tid='94' class='m'>Math</a>.<a id='95' tid='96' class='m'>abs</a>(<a id='97' tid='98' class='m'>distY</a>));
+        <a id='41' tid='42' class='m'>if</a> (<a id='43' tid='44' class='m'>Math</a>.<a id='45' tid='46' class='m'>abs</a>(<a id='47' tid='48' class='m'>stepSize</a>) <a id='49' tid='50' class='m'>&lt;</a> <a id='51' tid='52' class='m'>minStep</a>) {
+            <a id='53' tid='54' class='m'>var</a> <a id='55' tid='56' class='m'>step</a> <a id='57' tid='58' class='m'>=</a> <a id='59' tid='60' class='m'>actualMinStep</a> <a id='61' tid='62' class='m'>*</a> <a id='63' tid='64' class='m'>sign</a>(<a id='65' tid='66' class='m'>distY</a>);
+        } <a id='67' tid='68' class='m'>else</a> {
+            <a id='69' tid='70' class='m'>var</a> <a id='71' tid='72' class='m'>step</a> <a id='73' tid='74' class='m'>=</a> <a id='75' tid='76' class='m'>stepSize</a> <a id='77' tid='78' class='m'>*</a> <a id='79' tid='80' class='m'>sign</a>(<a id='81' tid='82' class='m'>distY</a>);
+        }
+        <span class='d'>var blocked = scrollWithBlockCheck(distX, step);</span>
+        <a id='21' tid='22' class='m'>var</a> <a id='23' tid='24' class='m'>rest</a> <a id='25' tid='26' class='m'>=</a> <a id='27' tid='28' class='m'>Math</a>.<a id='29' tid='30' class='m'>floor</a>(<a id='31' tid='32' class='m'>distY</a> <a id='33' tid='34' class='m'>/</a> <a id='35' tid='36' class='m'>step</a>) <a id='37' tid='38' class='m'>-</a> <a id='39' tid='40' class='m'>1</a>;
+        <a id='5' tid='6' class='m'>log</a>(<a id='7' tid='8' class='m'>&quot;blocked?&quot;</a> <a id='9' tid='10' class='m'>+</a> <a id='11' tid='12' class='m'>blocked</a> <a id='13' tid='14' class='m'>+</a> <a id='15' tid='16' class='m'>&quot;, rest steps=&quot;</a> <a id='17' tid='18' class='m'>+</a> <a id='19' tid='20' class='m'>rest</a>);
+        <span class='d'>if</span> (<a id='1' tid='2' class='m'>!</a><a id='3' tid='4' class='m'>blocked</a>) <span class='d'>{
+            cTimeout = setTimeout(&quot;matchWindow(&quot; + rest + &quot;)&quot;, stepInterval);
+        }</span> <span class='d'>else {
+            moving = false;
+        }</span>
+    }
+}
+
+
+////////////////////////// highlighting /////////////////////////////
+
+<a id='169' tid='170' class='m'>function</a> <a id='171' tid='172' class='m'>putHighlight</a>(<a id='173' tid='174' class='m'>id</a>, <a id='175' tid='176' class='m'>color</a>) {
+    <span class='d'>var elm = document.getElementById(id);</span>
+    <span class='d'>if</span> <span class='d'>(elm != null)</span> {
+        <a id='177' tid='178' class='m'>elm</a>.<a id='179' tid='180' class='m'>style</a>.<a id='181' tid='182' class='m'>backgroundColor</a> <span class='d'>=</span> <span class='d'>color</span>;
+    }
+}
+
+
+/*
+ * Highlight the link, target nodes and their lines,
+ * then start animation to move the other window to match.
+ */
+<a id='137' tid='138' class='m'>function</a> <a id='139' tid='140' class='m'>highlight</a>(<span class='d'>linkId, targetId, linkLineId, targetLineId</span>)
+{
+    <span class='d'>putHighlight(matchId, bgColor);</span>
+    <span class='d'>putHighlight(matchLineId, bgColor);</span>
+    <a id='157' tid='158' class='m'>putHighlight</a>(<a id='159' tid='160' class='m'>linkId</a>, <a id='161' tid='162' class='m'>nodeHLColor</a>);
+    <a id='151' tid='152' class='m'>putHighlight</a>(<a id='153' tid='154' class='m'>linkLineId</a>, <a id='155' tid='156' class='m'>lineHLColor</a>);
+
+    <span class='d'>matchId = linkId;</span>
+    <span class='d'>matchLineId = linkLineId;</span>
+
+    <span class='d'>with</span> <span class='d'>(otherside)</span> {
+        <span class='d'>putHighlight(matchId, bgColor);</span>
+        <span class='d'>putHighlight(matchLineId, bgColor);</span>
+        <a id='131' tid='132' class='m'>putHighlight</a>(<a id='133' tid='134' class='m'>targetId</a>, <a id='135' tid='136' class='m'>nodeHLColor</a>);
+        <a id='99' tid='100' class='m'>putHighlight</a>(<a id='101' tid='102' class='m'>targetLineId</a>, <a id='103' tid='104' class='m'>lineHLColor</a>);
+
+        <span class='d'>matchId = targetId;</span>
+        <span class='d'>matchLineId = targetLineId;</span>
+
+        <span class='d'>cTimeout = setTimeout(&quot;matchWindow(&quot; + nSteps + &quot;)&quot; , stepInterval);</span>
+    }
+}
+
+
+//////////////////////////// event handling ////////////////////////////
+/*
+ * Making other side move instantly. Move other side only if:
+ * - I am not in an animation initiated by the other side (moving)
+ * - I do not have pending program-generated scroll events.
+ *
+ * Theoretically eventCount alone should work, but this is not the
+ * case with Safari, so the &#39;moving&#39; flag is necessary!
+ */
+<span class='d'>function</span> <span class='d'>instantMoveOtherWindow</span> (<span class='d'>e</span>) {
+    <span class='d'>log(&quot;moving=&quot; + moving + &quot;, eventCount=&quot; + eventCount);</span>
+    <span class='d'>if</span> (<a id='141' tid='142' class='m'>!</a><a id='143' tid='144' class='m'>moving</a> <span class='d'>&&</span> <span class='d'>eventCount == 0</span>) <span class='d'>{
+        otherside.matchWindow(1);    
+    }</span>
+    <span class='d'>if (eventCount &gt; 0) {
+        eventCount--;
+    }</span>
+    <span class='d'>log(&quot;eventCount change=&quot; + eventCount);</span>
+}
+
+// Scroll and Resize event handlers
+<span class='d'>window.onscroll = instantMoveOtherWindow</span>
+<span class='d'>window.onresize = instantMoveOtherWindow</span>
+
+</pre>
+</div>
+<div id="right" class="src">
+<pre>
+<a id='rightstart' tid='leftstart'></a>
+// yDiff - a language-aware tool for comparing programs
+// Copyright (C) 2011 Yin Wang (yinwang0@gmail.com)
+
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+
+
+
+// convenience function for document.getElementById().
+<span class='i'>window[&#39;$&#39;]=function(a){return document.getElementById(a)};</span>
+
+
+/////////////////////// debug flag ////////////////////////
+<a id='480' tid='479' class='m'>var</a> <a id='482' tid='481' class='m'>debug</a> <a id='484' tid='483' class='m'>=</a> <a id='486' tid='485' class='m'>false</a>;
+
+
+/////////////////////// adjustable parameters //////////////////
+<a id='472' tid='471' class='m'>var</a> <a id='474' tid='473' class='m'>minStep</a> <a id='476' tid='475' class='m'>=</a> <a id='478' tid='477' class='m'>10</a>;
+<a id='464' tid='463' class='m'>var</a> <a id='466' tid='465' class='m'>nSteps</a> <a id='468' tid='467' class='m'>=</a> <a id='470' tid='469' class='m'>30</a>;
+<a id='456' tid='455' class='m'>var</a> <a id='458' tid='457' class='m'>stepInterval</a> <a id='460' tid='459' class='m'>=</a> <a id='462' tid='461' class='m'>10</a>;
+<span class='i'>var blockRange = 5;</span>                    // how far consider one page blocked
+<span class='i'>var nodeHLColor = &#39;yellow&#39;;</span>
+<a id='448' tid='447' class='m'>var</a> <a id='450' tid='449' class='m'>lineHLColor</a> <a id='452' tid='451' class='m'>=</a> <a id='454' tid='453' class='m'>&#39;#FFFF66&#39;</a>;
+<a id='440' tid='439' class='m'>var</a> <a id='442' tid='441' class='m'>lineBlockedColor</a> <a id='444' tid='443' class='m'>=</a> <a id='446' tid='445' class='m'>&#39;#E9AB17&#39;</a>;
+<a id='432' tid='431' class='m'>var</a> <a id='434' tid='433' class='m'>bgColor</a> <a id='436' tid='435' class='m'>=</a> <a id='438' tid='437' class='m'>&#39;&#39;</a>;
+<a id='424' tid='423' class='m'>var</a> <a id='426' tid='425' class='m'>bodyBlockedColor</a> <a id='428' tid='427' class='m'>=</a> <a id='430' tid='429' class='m'>&#39;#FAF0E6&#39;</a>;
+
+
+///////////////////////// globals ////////////////////////
+<span class='i'>var eventCount = { &#39;left&#39; : 0, &#39;right&#39; : 0};</span>
+<a id='416' tid='415' class='m'>var</a> <a id='418' tid='417' class='m'>moving</a> <a id='420' tid='419' class='m'>=</a> <a id='422' tid='421' class='m'>false</a>;
+<span class='i'>var matchId1 = &#39;leftstart&#39;;</span>
+<span class='i'>var matchId2 = &#39;rightstart&#39;;</span>
+<a id='408' tid='407' class='m'>var</a> <span class='i'>matchLineId1</span> <a id='410' tid='409' class='m'>=</a> <a id='412' tid='411' class='m'>-</a><a id='414' tid='413' class='m'>1</a>;
+<a id='400' tid='399' class='m'>var</a> <span class='i'>matchLineId2</span> <a id='402' tid='401' class='m'>=</a> <a id='404' tid='403' class='m'>-</a><a id='406' tid='405' class='m'>1</a>;
+<a id='396' tid='395' class='m'>var</a> <a id='398' tid='397' class='m'>cTimeout</a>;
+
+
+///////////////////////// utilities ///////////////////////
+
+// No Math.sign() in JS?
+<a id='356' tid='355' class='m'>function</a> <a id='358' tid='357' class='m'>sign</a>(<a id='360' tid='359' class='m'>x</a>) {
+    <a id='362' tid='361' class='m'>if</a> (<a id='364' tid='363' class='m'>x</a> <a id='366' tid='365' class='m'>&gt;</a> <a id='368' tid='367' class='m'>0</a>) {
+        <a id='370' tid='369' class='m'>return</a> <a id='372' tid='371' class='m'>1</a>;
+    } <a id='374' tid='373' class='m'>else</a> <a id='376' tid='375' class='m'>if</a> (<a id='378' tid='377' class='m'>x</a> <a id='380' tid='379' class='m'>&lt;</a> <a id='382' tid='381' class='m'>0</a>) {
+        <a id='384' tid='383' class='m'>return</a> <a id='386' tid='385' class='m'>-</a><a id='388' tid='387' class='m'>1</a>;
+    } <a id='390' tid='389' class='m'>else</a> {
+        <a id='392' tid='391' class='m'>return</a> <a id='394' tid='393' class='m'>0</a>;
+    }
+}
+
+
+<a id='342' tid='341' class='m'>function</a> <a id='344' tid='343' class='m'>log</a>(<a id='346' tid='345' class='m'>msg</a>) {
+    <a id='348' tid='347' class='m'>if</a> (<a id='350' tid='349' class='m'>debug</a>) {
+        <a id='352' tid='351' class='m'>console</a>.<a id='354' tid='353' class='m'>log</a><span class='i'>(msg)</span>;
+    }
+}
+
+
+
+<a id='322' tid='321' class='m'>function</a> <a id='324' tid='323' class='m'>elementPosition</a>(<a id='326' tid='325' class='m'>id</a>) {
+    <span class='i'>obj = $(id);</span>
+    <a id='328' tid='327' class='m'>var</a> <a id='330' tid='329' class='m'>curleft</a> <a id='332' tid='331' class='m'>=</a> <a id='334' tid='333' class='m'>0</a>, <a id='336' tid='335' class='m'>curtop</a> <a id='338' tid='337' class='m'>=</a> <a id='340' tid='339' class='m'>0</a>;
+
+    <a id='270' tid='269' class='m'>if</a> (<a id='272' tid='271' class='m'>obj</a> <a id='274' tid='273' class='m'>&&</a> <a id='276' tid='275' class='m'>obj</a>.<a id='278' tid='277' class='m'>offsetParent</a>) {
+        <a id='280' tid='279' class='m'>curleft</a> <a id='282' tid='281' class='m'>=</a> <a id='284' tid='283' class='m'>obj</a>.<a id='286' tid='285' class='m'>offsetLeft</a>;
+        <a id='288' tid='287' class='m'>curtop</a> <a id='290' tid='289' class='m'>=</a> <a id='292' tid='291' class='m'>obj</a>.<a id='294' tid='293' class='m'>offsetTop</a>;
+
+        <a id='296' tid='295' class='m'>while</a> (<a id='298' tid='297' class='m'>obj</a> <a id='300' tid='299' class='m'>=</a> <a id='302' tid='301' class='m'>obj</a>.<a id='304' tid='303' class='m'>offsetParent</a>) {
+            <a id='306' tid='305' class='m'>curleft</a> <a id='308' tid='307' class='m'>+=</a> <a id='310' tid='309' class='m'>obj</a>.<a id='312' tid='311' class='m'>offsetLeft</a>;
+            <a id='314' tid='313' class='m'>curtop</a> <a id='316' tid='315' class='m'>+=</a> <a id='318' tid='317' class='m'>obj</a>.<a id='320' tid='319' class='m'>offsetTop</a>;
+        }
+    }
+
+    <a id='210' tid='209' class='m'>return</a> { <a id='212' tid='211' class='m'>x</a>: <a id='214' tid='213' class='m'>curleft</a>, <a id='216' tid='215' class='m'>y</a>: <a id='218' tid='217' class='m'>curtop</a> };
+}
+
+
+/*
+ * Scroll the window to relative position, detecting blocking positions.
+ */
+<span class='i'>function</span> <span class='i'>scrollWithBlockCheck</span>(<span class='i'>container, distX, distY</span>) {
+    <span class='i'>var oldTop = container.scrollTop;</span>
+    <span class='i'>var oldLeft = container.scrollLeft;</span>
+
+    <span class='i'>container.scrollTop += distY;</span>      // the ONLY place for actual scrolling
+    <span class='i'>container.scrollLeft += distX;</span>
+
+    <span class='i'>var actualX = container.scrollLeft - oldLeft;</span>
+    <span class='i'>var actualY = container.scrollTop - oldTop;</span>
+    <a id='254' tid='253' class='m'>log</a>(<a id='256' tid='255' class='m'>&quot;distY=&quot;</a> <a id='258' tid='257' class='m'>+</a> <a id='260' tid='259' class='m'>distY</a> <a id='262' tid='261' class='m'>+</a> <a id='264' tid='263' class='m'>&quot;, actualY=&quot;</a> <a id='266' tid='265' class='m'>+</a> <a id='268' tid='267' class='m'>actualY</a>);
+    <span class='i'>log(&quot;distX=&quot; + distX + &quot;, actualX=&quot; + actualX);</span>
+
+    // extra leewaw here because Chrome scrolling is horribly inacurate
+    <a id='220' tid='219' class='m'>if</a> ((<a id='222' tid='221' class='m'>Math</a>.<a id='224' tid='223' class='m'>abs</a>(<a id='226' tid='225' class='m'>distX</a>) <a id='228' tid='227' class='m'>&gt;</a> <a id='230' tid='229' class='m'>blockRange</a> <span class='i'>&&</span> <span class='i'>actualX === 0</span>)
+        <a id='232' tid='231' class='m'>||</a> <a id='234' tid='233' class='m'>Math</a>.<a id='236' tid='235' class='m'>abs</a>(<a id='238' tid='237' class='m'>distY</a>) <a id='240' tid='239' class='m'>&gt;</a> <a id='242' tid='241' class='m'>blockRange</a> <span class='i'>&&</span> <span class='i'>actualY === 0</span>) {
+        <a id='244' tid='243' class='m'>log</a>(<a id='246' tid='245' class='m'>&quot;blocked&quot;</a>);
+        <span class='i'>container.style.backgroundColor = bodyBlockedColor;</span>
+        <a id='184' tid='183' class='m'>return</a> <a id='186' tid='185' class='m'>true</a>;
+    } <a id='248' tid='247' class='m'>else</a> {
+        <span class='i'>eventCount[container.id] += 1;</span>
+        <span class='i'>container.style.backgroundColor = bgColor;</span>
+        <a id='250' tid='249' class='m'>return</a> <a id='252' tid='251' class='m'>false</a>;
+    }
+}
+
+
+<span class='i'>function getContainer(elm) {
+    while (elm && elm.tagName !== &#39;DIV&#39;) {
+        elm = elm.parentElement || elm.parentNode;
+    }
+    return elm;
+}</span>
+
+
+/*
+ * timed animation function for scrolling the current window
+ */
+<span class='i'>function</span> <span class='i'>matchWindow</span>(<span class='i'>linkId, targetId, n</span>)
+{
+    <a id='204' tid='203' class='m'>moving</a> <a id='206' tid='205' class='m'>=</a> <a id='208' tid='207' class='m'>true</a>;
+
+    <span class='i'>var link = $(linkId);</span>
+    <span class='i'>var target = $(targetId);</span>
+    <span class='i'>var linkContainer = getContainer(link);</span>
+    <span class='i'>var targetContainer = getContainer(target);</span>
+
+    <span class='i'>var linkPos = elementPosition(linkId).y - linkContainer.scrollTop;</span>
+    <span class='i'>var targetPos = elementPosition(targetId).y - targetContainer.scrollTop;</span>
+    <span class='i'>var distY = targetPos - linkPos;</span>
+    <span class='i'>var distX = linkContainer.scrollLeft - targetContainer.scrollLeft;</span>
+
+
+    <a id='188' tid='187' class='m'>log</a>(<a id='190' tid='189' class='m'>&quot;matching window... &quot;</a> <a id='192' tid='191' class='m'>+</a> <a id='194' tid='193' class='m'>n</a> <a id='196' tid='195' class='m'>+</a> <a id='198' tid='197' class='m'>&quot; distY=&quot;</a> <a id='200' tid='199' class='m'>+</a> <a id='202' tid='201' class='m'>distY</a> <span class='i'>+</span> <span class='i'>&quot; distX=&quot;</span> <span class='i'>+</span> <span class='i'>distX</span>);
+
+    <span class='i'>if</span> <span class='i'>(distY === 0 && distX === 0)</span> {
+        <span class='i'>clearTimeout(cTimeout);</span>
+        <a id='164' tid='163' class='m'>moving</a> <a id='166' tid='165' class='m'>=</a> <a id='168' tid='167' class='m'>false</a>;
+    } <span class='i'>else</span> <span class='i'>if</span> (<a id='146' tid='145' class='m'>n</a> <a id='148' tid='147' class='m'>&lt;=</a> <a id='150' tid='149' class='m'>1</a>) <span class='i'>{
+        scrollWithBlockCheck(targetContainer, distX, distY);
+        moving = false;
+    }</span> <span class='i'>else</span> {
+        <a id='112' tid='111' class='m'>var</a> <a id='114' tid='113' class='m'>stepSize</a> <a id='116' tid='115' class='m'>=</a> <a id='118' tid='117' class='m'>Math</a>.<a id='120' tid='119' class='m'>floor</a>(<a id='122' tid='121' class='m'>Math</a>.<a id='124' tid='123' class='m'>abs</a>(<a id='126' tid='125' class='m'>distY</a>) <a id='128' tid='127' class='m'>/</a> <a id='130' tid='129' class='m'>n</a>);
+        <a id='84' tid='83' class='m'>actualMinStep</a> <a id='86' tid='85' class='m'>=</a> <a id='88' tid='87' class='m'>Math</a>.<a id='90' tid='89' class='m'>min</a>(<a id='92' tid='91' class='m'>minStep</a>, <a id='94' tid='93' class='m'>Math</a>.<a id='96' tid='95' class='m'>abs</a>(<a id='98' tid='97' class='m'>distY</a>));
+        <a id='42' tid='41' class='m'>if</a> (<a id='44' tid='43' class='m'>Math</a>.<a id='46' tid='45' class='m'>abs</a>(<a id='48' tid='47' class='m'>stepSize</a>) <a id='50' tid='49' class='m'>&lt;</a> <a id='52' tid='51' class='m'>minStep</a>) {
+            <a id='54' tid='53' class='m'>var</a> <a id='56' tid='55' class='m'>step</a> <a id='58' tid='57' class='m'>=</a> <a id='60' tid='59' class='m'>actualMinStep</a> <a id='62' tid='61' class='m'>*</a> <a id='64' tid='63' class='m'>sign</a>(<a id='66' tid='65' class='m'>distY</a>);
+        } <a id='68' tid='67' class='m'>else</a> {
+            <a id='70' tid='69' class='m'>var</a> <a id='72' tid='71' class='m'>step</a> <a id='74' tid='73' class='m'>=</a> <a id='76' tid='75' class='m'>stepSize</a> <a id='78' tid='77' class='m'>*</a> <a id='80' tid='79' class='m'>sign</a>(<a id='82' tid='81' class='m'>distY</a>);
+        }
+        <span class='i'>var blocked = scrollWithBlockCheck(targetContainer, distX, step);</span>
+        <a id='22' tid='21' class='m'>var</a> <a id='24' tid='23' class='m'>rest</a> <a id='26' tid='25' class='m'>=</a> <a id='28' tid='27' class='m'>Math</a>.<a id='30' tid='29' class='m'>floor</a>(<a id='32' tid='31' class='m'>distY</a> <a id='34' tid='33' class='m'>/</a> <a id='36' tid='35' class='m'>step</a>) <a id='38' tid='37' class='m'>-</a> <a id='40' tid='39' class='m'>1</a>;
+        <a id='6' tid='5' class='m'>log</a>(<a id='8' tid='7' class='m'>&quot;blocked?&quot;</a> <a id='10' tid='9' class='m'>+</a> <a id='12' tid='11' class='m'>blocked</a> <a id='14' tid='13' class='m'>+</a> <a id='16' tid='15' class='m'>&quot;, rest steps=&quot;</a> <a id='18' tid='17' class='m'>+</a> <a id='20' tid='19' class='m'>rest</a>);
+        <span class='i'>if</span> (<a id='2' tid='1' class='m'>!</a><a id='4' tid='3' class='m'>blocked</a>) <span class='i'>{
+            cTimeout = setTimeout(function () {
+                return matchWindow(linkId, targetId, rest);
+            }, stepInterval);
+        }</span> <span class='i'>else {
+            clearTimeout(cTimeout);
+            moving = false;
+        }</span>
+    }
+}
+
+
+
+////////////////////////// highlighting /////////////////////////////
+
+<span class='i'>var highlighted = []</span>
+<a id='170' tid='169' class='m'>function</a> <a id='172' tid='171' class='m'>putHighlight</a>(<a id='174' tid='173' class='m'>id</a>, <a id='176' tid='175' class='m'>color</a>) {
+    <span class='i'>var elm = $(id);</span>
+    <span class='i'>if</span> <span class='i'>(elm !== null)</span> {
+        <a id='178' tid='177' class='m'>elm</a>.<a id='180' tid='179' class='m'>style</a>.<a id='182' tid='181' class='m'>backgroundColor</a> <span class='i'>=</span> <span class='i'>color</span>;
+        <span class='i'>if (color !== bgColor) {
+            highlighted.push(id);
+        }</span>
+    }
+}
+
+
+<span class='i'>function clearHighlight() {
+    for (i = 0; i &lt; highlighted.length; i += 1) {
+        putHighlight(highlighted[i], bgColor);
+    }
+    highlighted = [];
+}</span>
+
+
+
+/*
+ * Highlight the link, target nodes and their lines,
+ * then start animation to move the other window to match.
+ */
+<a id='138' tid='137' class='m'>function</a> <a id='140' tid='139' class='m'>highlight</a>(<span class='i'>me, linkId, targetId, linkLineId, targetLineId, doMatch</span>)
+{
+    <span class='i'>if (me.id === &#39;left&#39;) {
+        matchId1 = linkId;
+        matchId2 = targetId;
+    } else {
+        matchId1 = targetId;
+        matchId2 = linkId;
+    }</span>
+
+    <span class='i'>clearHighlight();</span>
+
+    <a id='158' tid='157' class='m'>putHighlight</a>(<a id='160' tid='159' class='m'>linkId</a>, <a id='162' tid='161' class='m'>nodeHLColor</a>);
+    <a id='132' tid='131' class='m'>putHighlight</a>(<a id='134' tid='133' class='m'>targetId</a>, <a id='136' tid='135' class='m'>nodeHLColor</a>);
+    <a id='152' tid='151' class='m'>putHighlight</a>(<a id='154' tid='153' class='m'>linkLineId</a>, <a id='156' tid='155' class='m'>lineHLColor</a>);
+    <a id='100' tid='99' class='m'>putHighlight</a>(<a id='102' tid='101' class='m'>targetLineId</a>, <a id='104' tid='103' class='m'>lineHLColor</a>);
+
+    <span class='i'>if (doMatch) {
+        matchWindow(linkId, targetId, nSteps);
+    }</span>
+}
+
+
+<span class='i'>function</span> <span class='i'>instantMoveOtherWindow</span> (<span class='i'>me</span>) {
+    <span class='i'>log(&quot;me=&quot; + me.id + &quot;, eventcount=&quot; + eventCount[me.id]);</span>
+    <span class='i'>log(&quot;matchId1=&quot; + matchId1 + &quot;, matchId2=&quot; + matchId2);</span>
+
+    <span class='i'>me.style.backgroundColor = bgColor;</span>
+
+    <span class='i'>if</span> (<a id='142' tid='141' class='m'>!</a><a id='144' tid='143' class='m'>moving</a> <span class='i'>&&</span> <span class='i'>eventCount[me.id] === 0</span>) <span class='i'>{
+        if (me.id === &#39;left&#39;) {
+            matchWindow(matchId1, matchId2, 1);
+        } else {
+            matchWindow(matchId2, matchId1, 1);
+        }
+    }</span>
+    <span class='i'>if (eventCount[me.id] &gt; 0) {
+        eventCount[me.id] -= 1;
+    }</span>
+}
+
+
+<span class='i'>function getTarget(x){
+    x = x || window.event;
+    return x.target || x.srcElement;
+}</span>
+
+
+<span class='i'>window.onload</span> <span class='i'>=</span>
+    <span class='i'>function</span> (<span class='i'>e</span>) {
+        <span class='i'>var tags = document.getElementsByTagName(&quot;A&quot;)</span>
+        <span class='i'>for</span> (<a id='106' tid='105' class='m'>var</a> <span class='i'>i</span> <a id='108' tid='107' class='m'>=</a> <a id='110' tid='109' class='m'>0</a>; <span class='i'>i &lt; tags.length</span>; <span class='i'>i++</span>) <span class='i'>{
+            tags[i].onmouseover =
+                function (e) {
+                    var t = getTarget(e)
+                    var lid = t.id
+                    var tid = t.getAttribute(&#39;tid&#39;)
+                    var container = getContainer(t)
+                    highlight(container, lid, tid, &#39;ignore&#39;, &#39;ignore&#39;, false)
+                }
+            tags[i].onclick =
+                function (e) {
+                    var t = getTarget(e)
+                    var lid = t.id
+                    var tid = t.getAttribute(&#39;tid&#39;)
+                    var container = getContainer(t)
+                    highlight(container, lid, tid, &#39;ignore&#39;, &#39;ignore&#39;, true)
+                }
+        }</span>
+
+        <span class='i'>tags = document.getElementsByTagName(&quot;DIV&quot;)</span>
+        <span class='i'>for (var i = 0; i &lt; tags.length; i++) {
+            tags[i].onscroll =
+                function (e) {
+                    instantMoveOtherWindow(getTarget(e))
+                }
+        }</span>
+
+    }
+
+</pre>
+</div>
+</body>
+</html>
