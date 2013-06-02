@@ -1,4 +1,4 @@
-root: /
+baseurl: http://yinwang.org
 permalink: /blog-cn/:year/:month/:day/:title
 markdown: rdiscount
 pygments: true
