@@ -1,0 +1,397 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK href="diff.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="nav.js"></script>
+</head>
+<body>
+<div id="left" class="src"><pre><a id="leftstart" tid="rightstart"></a>##################################################################
+# Demo for an AST-based diffing tool
+# author: Yin Wang (yinwang0@gmail.com)
+##################################################################
+
+##################################################################
+# Features:
+# - Detect insertion, deletion and modification of code
+# - Detect refactoring (renamed or moved code)
+# - Assess similarity of code
+# - Ignore comments and whitespaces
+#
+###################################################################
+# Usage:
+#
+# - Mouseover any framed elements to show information
+#
+# - Click on Blue or White elements to match the other side.
+#   Once matched, the two sides will be locked into that
+#   position until next match.
+#
+####################################################################
+# Legend of colors:
+#
+# - Red   : deleted
+# - Green : inserted
+# - Blue  : modified (mouse over to show percentage of change)
+# - White : unchanged or moved
+#
+###################################################################
+
+
+
+
+<a id='60' tid='61' class='c'>class <a id='58' tid='59' class='u'>Nil</a>:
+    <a id='56' tid='57' class='c'>def <a id='54' tid='55' class='u'>__repr__</a>(<a id='50' tid='51' class='c'>this</a>):
+        return <a id='52' tid='53' class='u'>&quot;()&quot;</a></a></a>
+
+<a id='62' tid='63' class='u'>nil</a> = <a id='64' tid='65' class='u'>Nil</a>()            # singleton instance of Nil
+
+
+
+<a id='168' tid='169' class='c'>class <a id='166' tid='167' class='c'>Cons</a>:
+    <a id='82' tid='83' class='c'>def <a id='80' tid='81' class='u'>__init__</a>(<a id='70' tid='71' class='c'>this</a>, <a id='68' tid='69' class='c'>first</a>, <a id='66' tid='67' class='c'>rest</a>):
+            <a id='72' tid='73' class='c'>this.first</a> = <a id='74' tid='75' class='c'>first</a>
+            <a id='76' tid='77' class='c'>this.rest</a> = <a id='78' tid='79' class='c'>rest</a></a>
+    <a id='164' tid='165' class='c'>def <a id='162' tid='163' class='u'>__repr__</a>(<a id='84' tid='85' class='c'>this</a>):
+        if (<a id='90' tid='91' class='c'>this.rest</a> <a id='86' tid='87' class='u'>==</a> <a id='88' tid='89' class='u'>nil</a>):
+            return <a id='96' tid='97' class='u'>&quot;(&quot;</a> <a id='102' tid='103' class='u'>+</a> <a id='100' tid='101' class='u'>repr</a>(<a id='98' tid='99' class='c'>this.first</a>) <a id='92' tid='93' class='u'>+</a> <a id='94' tid='95' class='u'>&quot;)&quot;</a>
+        elif (<a id='108' tid='109' class='c'>IS</a>(<a id='106' tid='107' class='c'>this.rest</a>, <a id='104' tid='105' class='c'>Cons</a>)):
+            <a id='110' tid='111' class='u'>s</a> = <a id='114' tid='115' class='u'>repr</a>(<a id='112' tid='113' class='c'>this.rest</a>)
+            return <a id='124' tid='125' class='u'>&quot;(&quot;</a> <a id='130' tid='131' class='u'>+</a> <a id='128' tid='129' class='u'>repr</a>(<a id='126' tid='127' class='c'>this.first</a>) <a id='120' tid='121' class='u'>+</a> <a id='122' tid='123' class='u'>&quot; &quot;</a> <a id='138' tid='139' class='u'>+</a> <a id='136' tid='137' class='u'>s</a>[<a id='132' tid='133' class='u'>1</a>:-<a id='134' tid='135' class='u'>1]</a> <a id='116' tid='117' class='u'>+</a> <a id='118' tid='119' class='u'>&quot;)&quot;</a>
+        else:
+            return <a id='148' tid='149' class='u'>&quot;(&quot;</a> <a id='154' tid='155' class='u'>+</a> <a id='152' tid='153' class='u'>repr</a>(<a id='150' tid='151' class='c'>this.first</a>) <a id='144' tid='145' class='u'>+</a> <a id='146' tid='147' class='u'>&quot; . &quot;</a> <a id='160' tid='161' class='u'>+</a> <a id='158' tid='159' class='u'>repr</a>(<a id='156' tid='157' class='c'>this.rest</a>) <a id='140' tid='141' class='u'>+</a> <a id='142' tid='143' class='u'>&quot;)&quot;</a></a></a>
+
+
+
+
+<a id='178' tid='179' class='c'>def <a id='176' tid='177' class='u'>foldl</a>(<a id='174' tid='175' class='u'>f</a>, <a id='172' tid='173' class='u'>x</a>, <a id='170' tid='171' class='u'>ls</a>):
+    <span class='d'>if ls == nil:
+        return x
+    else:
+        return <span class='d'>foldl(f, f(x, ls.first), ls.rest)</span></span></a>
+
+
+
+
+<a id='184' tid='185' class='c'>def <a id='182' tid='183' class='u'>length</a>(<a id='180' tid='181' class='u'>ls</a>):
+    <span class='d'>if ls == nil:
+        return 0
+    else:
+        return <span class='d'>1 + length(ls.rest)</span></span></a>
+
+
+
+
+<span class='d'>def atomAssoc(u, v):
+    return Cons(Cons(u, v), nil)</span>
+
+
+
+
+<span class='d'>def mkList(pylist):
+    if (pylist == []):
+        return nil
+    else:
+        return Cons(pylist[0], mkList(pylist[1:]))</span>
+
+
+
+
+<span class='d'>def toList(ls):
+    ret = []
+    while ls &lt;&gt; nil:
+        ret.append(ls.first)
+        ls = ls.rest
+    return ret</span>
+
+
+
+
+<a id='18' tid='19' class='c'>def <a id='0' tid='1' class='u'>ext</a>(<a id='12' tid='13' class='u'>x</a>, <a id='14' tid='15' class='u'>v</a>, <a id='16' tid='17' class='u'>s</a>):
+    return <a id='2' tid='3' class='c'>Cons</a>(<a id='4' tid='5' class='c'>Cons</a>(<a id='6' tid='7' class='u'>x</a>, <a id='8' tid='9' class='u'>v</a>), <a id='10' tid='11' class='u'>s</a>)</a>
+
+
+
+
+<a id='196' tid='197' class='c'>def <a id='194' tid='195' class='u'>append</a>(<span class='d'>ls1</span>, <span class='d'>ls2</span>):
+    <span class='d'>if (ls1 == nil):
+        return ls2
+    else:
+        return <a id='192' tid='193' class='c'>append</a>(<a id='190' tid='191' class='c'>ls1.rest</a>, <a id='188' tid='189' class='c'>Cons</a>(<a id='186' tid='187' class='c'>ls1.first</a>, <span class='d'>ls2</span>))</span></a>
+
+
+
+
+<a id='206' tid='207' class='c'>def <a id='204' tid='205' class='u'>assq</a>(<a id='200' tid='201' class='u'>x</a>, <a id='198' tid='199' class='u'>s</a>):
+    <span class='d'>while s &lt;&gt; nil:
+        if x == s.first.first:
+            return s.first
+        else:
+            s = s.rest</span>
+    return <a id='202' tid='203' class='u'>None</a></a>
+
+    # if (s == nil):
+    #     return None
+    # elif (x == s.first.first):
+    #     return s.first
+    # else:
+    #     return assq(x, s.rest)
+
+
+# lookup is unchanged, but it is moved in relative
+# position to other functions.
+<a id='232' tid='233' class='u'>def <a id='230' tid='231' class='u'>lookup</a>(<a id='210' tid='211' class='u'>x</a>, <a id='208' tid='209' class='u'>s</a>):
+    <a id='212' tid='213' class='u'>p</a> = <a id='218' tid='219' class='u'>assq</a>(<a id='216' tid='217' class='u'>x</a>, <a id='214' tid='215' class='u'>s</a>)
+    if <a id='224' tid='225' class='u'>p</a> <a id='220' tid='221' class='u'>&lt;&gt;</a> <a id='222' tid='223' class='u'>None</a>:
+        return <a id='226' tid='227' class='u'>p.snd</a>
+    else:
+        return <a id='228' tid='229' class='u'>None</a></a>
+
+
+
+# cmap was renamed to maplist, but the function
+# has been modified significantly since renaming.
+# Thus we no longer consider them to be the same
+# function.
+<span class='d'>def cmap(f, ls):
+    if (ls == nil):
+        return nil
+    else:
+        return Cons(f(ls.first), cmap(f, ls.rest))</span>
+
+
+# reverse is unchanged
+<a id='48' tid='49' class='u'>def <a id='20' tid='21' class='u'>reverse</a>(<a id='46' tid='47' class='u'>ls</a>):
+    <a id='44' tid='45' class='u'>ret</a> = <a id='42' tid='43' class='u'>nil</a>
+    while <a id='36' tid='37' class='u'>ls</a> <a id='40' tid='41' class='u'>&lt;&gt;</a> <a id='38' tid='39' class='u'>nil</a>:
+        <a id='34' tid='35' class='u'>ret</a> = <a id='28' tid='29' class='u'>Cons</a>(<a id='30' tid='31' class='u'>ls.first</a>, <a id='32' tid='33' class='u'>ret</a>)
+        <a id='26' tid='27' class='u'>ls</a> = <a id='24' tid='25' class='u'>ls.rest</a>
+    return <a id='22' tid='23' class='u'>ret</a></a>
+
+
+
+# cfilter was renamed to filterlist, but the
+# function has been modified significantly since
+# renaming. Thus we no longer consider them to be
+# the same function.
+<span class='d'>def cfilter(f, ls):
+    ret = nil
+    while ls &lt;&gt; nil:
+        if f(ls.first):
+            ret = Cons(ls.first, ret)
+        ls = ls.rest
+    return reverse(ret)</span>
+
+    # if (ls == nil):
+    #     return nil
+    # elif f(ls.first):
+    #     return Cons(ls.first, cfilter(f, ls.rest))
+    # else:
+    #     return cfilter(f, ls.rest)
+
+</pre></div><div id="right" class="src"><pre><a id="rightstart" tid="leftstart"></a>##################################################################
+# Demo for an AST-based diffing tool
+# author: Yin Wang (yinwang0@gmail.com)
+##################################################################
+
+##################################################################
+# Features:
+# - Detect insertion, deletion and modification of code
+# - Detect refactoring (renamed or moved code)
+# - Assess similarity of code
+# - Ignore comments and whitespaces
+#
+###################################################################
+# Usage:
+#
+# - Mouseover any framed elements to show information
+#
+# - Click on Blue or White elements to match the other side.
+#   Once matched, the two sides will be locked into that
+#   position until next match.
+#
+####################################################################
+# Legend of colors:
+#
+# - Red   : deleted
+# - Green : inserted
+# - Blue  : modified (mouse over to show percentage of change)
+# - White : unchanged or moved
+#
+###################################################################
+
+
+
+
+
+<span class='i'>class PairIterator:
+    def __init__(self, p):
+        self.p = p
+    def next(self):
+        if self.p == nil:
+            raise StopIteration
+        ret = self.p.fst
+        self.p = self.p.snd
+        return ret</span>
+
+
+
+
+<a id='61' tid='60' class='c'>class <a id='59' tid='58' class='u'>Nil</a>:
+    <a id='57' tid='56' class='c'>def <a id='55' tid='54' class='u'>__repr__</a>(<a id='51' tid='50' class='c'>self</a>):
+        return <a id='53' tid='52' class='u'>&quot;()&quot;</a></a>
+    <span class='i'>def __iter__(self):
+        return PairIterator(self)</span></a>
+
+<a id='63' tid='62' class='u'>nil</a> = <a id='65' tid='64' class='u'>Nil</a>()            # singleton instance of Nil
+
+
+
+
+<a id='169' tid='168' class='c'>class <a id='167' tid='166' class='c'>Pair</a>:
+    <a id='83' tid='82' class='c'>def <a id='81' tid='80' class='u'>__init__</a>(<a id='71' tid='70' class='c'>self</a>, <a id='69' tid='68' class='c'>fst</a>, <a id='67' tid='66' class='c'>snd</a>):
+            <a id='73' tid='72' class='c'>self.fst</a> = <a id='75' tid='74' class='c'>fst</a>
+            <a id='77' tid='76' class='c'>self.snd</a> = <a id='79' tid='78' class='c'>snd</a></a>
+    <a id='165' tid='164' class='c'>def <a id='163' tid='162' class='u'>__repr__</a>(<a id='85' tid='84' class='c'>self</a>):
+        if (<a id='91' tid='90' class='c'>self.snd</a> <a id='87' tid='86' class='u'>==</a> <a id='89' tid='88' class='u'>nil</a>):
+            return <a id='97' tid='96' class='u'>&quot;(&quot;</a> <a id='103' tid='102' class='u'>+</a> <a id='101' tid='100' class='u'>repr</a>(<a id='99' tid='98' class='c'>self.fst</a>) <a id='93' tid='92' class='u'>+</a> <a id='95' tid='94' class='u'>&quot;)&quot;</a>
+        elif (<a id='109' tid='108' class='c'>isinstance</a>(<a id='107' tid='106' class='c'>self.snd</a>, <a id='105' tid='104' class='c'>Pair</a>)):
+            <a id='111' tid='110' class='u'>s</a> = <a id='115' tid='114' class='u'>repr</a>(<a id='113' tid='112' class='c'>self.snd</a>)
+            return <a id='125' tid='124' class='u'>&quot;(&quot;</a> <a id='131' tid='130' class='u'>+</a> <a id='129' tid='128' class='u'>repr</a>(<a id='127' tid='126' class='c'>self.fst</a>) <a id='121' tid='120' class='u'>+</a> <a id='123' tid='122' class='u'>&quot; &quot;</a> <a id='139' tid='138' class='u'>+</a> <a id='137' tid='136' class='u'>s</a>[<a id='133' tid='132' class='u'>1</a>:-<a id='135' tid='134' class='u'>1]</a> <a id='117' tid='116' class='u'>+</a> <a id='119' tid='118' class='u'>&quot;)&quot;</a>
+        else:
+            return <a id='149' tid='148' class='u'>&quot;(&quot;</a> <a id='155' tid='154' class='u'>+</a> <a id='153' tid='152' class='u'>repr</a>(<a id='151' tid='150' class='c'>self.fst</a>) <a id='145' tid='144' class='u'>+</a> <a id='147' tid='146' class='u'>&quot; . &quot;</a> <a id='161' tid='160' class='u'>+</a> <a id='159' tid='158' class='u'>repr</a>(<a id='157' tid='156' class='c'>self.snd</a>) <a id='141' tid='140' class='u'>+</a> <a id='143' tid='142' class='u'>&quot;)&quot;</a></a>
+    <span class='i'>def __iter__(self):
+        return PairIterator(self)</span></a>
+
+
+
+
+<a id='179' tid='178' class='c'>def <a id='177' tid='176' class='u'>foldl</a>(<a id='175' tid='174' class='u'>f</a>, <a id='173' tid='172' class='u'>x</a>, <a id='171' tid='170' class='u'>ls</a>):
+    <span class='i'>ret = x</span>
+    <span class='i'>for y in ls:
+        ret = f(ret, y)</span>
+    return <span class='i'>ret</span></a>
+
+
+
+
+<a id='185' tid='184' class='c'>def <a id='183' tid='182' class='u'>length</a>(<a id='181' tid='180' class='u'>ls</a>):
+    <span class='i'>ret = 0</span>
+    <span class='i'>for x in ls:
+        ret = ret + 1</span>
+    return <span class='i'>ret</span></a>
+
+
+
+
+<span class='i'>def assoc(u, v):
+    return Pair(Pair(u, v), nil)</span>
+
+
+
+
+<span class='i'>def slist(pylist):
+    ret = nil
+    for i in xrange(len(pylist)):
+        ret = Pair(pylist[len(pylist)-i-1], ret)
+    return ret</span>
+
+
+
+
+<span class='i'>def pylist(ls):
+    ret = []
+    for x in ls:
+        ret.append(x)
+    return ret</span>
+
+
+
+# maplist was renamed from cmap, but the function
+# has been modified significantly since renaming.
+# Thus we no longer consider them to be the same
+# function.
+<span class='i'>def maplist(f, ls):
+    ret = nil
+    for x in ls:
+        ret = Pair(f(x), ret)
+    return reverse(ret)</span>
+
+
+
+# filterlist was renamed from cfilter, but the
+# function has been modified significantly since
+# renaming. Thus we no longer consider them to be
+# the same function.
+<span class='i'>def filterlist(f, ls):
+    ret = nil
+    for x in ls:
+        if f(x):
+            ret = Pair(x, ret)
+    return reverse(ret)</span>
+
+
+
+<a id='49' tid='48' class='u'>def <a id='21' tid='20' class='u'>reverse</a>(<a id='47' tid='46' class='u'>ls</a>):
+    <a id='45' tid='44' class='u'>ret</a> = <a id='43' tid='42' class='u'>nil</a>
+    while <a id='37' tid='36' class='u'>ls</a> <a id='41' tid='40' class='u'>&lt;&gt;</a> <a id='39' tid='38' class='u'>nil</a>:
+        <a id='35' tid='34' class='u'>ret</a> = <a id='29' tid='28' class='u'>Cons</a>(<a id='31' tid='30' class='u'>ls.first</a>, <a id='33' tid='32' class='u'>ret</a>)
+        <a id='27' tid='26' class='u'>ls</a> = <a id='25' tid='24' class='u'>ls.rest</a>
+    return <a id='23' tid='22' class='u'>ret</a></a>
+
+# def reverse(ls):
+#     ret = nil
+#     for x in ls:
+#         ret = Pair(x, ret)
+#     return ret
+
+
+
+
+<a id='197' tid='196' class='c'>def <a id='195' tid='194' class='u'>append</a>(*<span class='i'>lists</span>, **<span class='i'>kw</span>):
+    <span class='i'>def append1(ls1, ls2):
+        ret = ls2
+        for x in ls1:
+            ret = Pair(x, ret)
+        return ret</span>
+    return <a id='193' tid='192' class='c'>foldl</a>(<span class='i'>append1</span>, <a id='191' tid='190' class='c'>nil</a>, <a id='189' tid='188' class='c'>slist</a>(<a id='187' tid='186' class='c'>lists</a>))</a>
+
+
+
+
+<a id='207' tid='206' class='c'>def <a id='205' tid='204' class='u'>assq</a>(<a id='201' tid='200' class='u'>x</a>, <a id='199' tid='198' class='u'>s</a>):
+    <span class='i'>for p in s:
+        if x == p.fst:
+            return p</span>
+    return <a id='203' tid='202' class='u'>None</a></a>
+
+
+
+
+<span class='i'>def ziplist(ls1, ls2):
+    ret = nil
+    while ls1 &lt;&gt; nil and ls2 &lt;&gt; nil:
+        ret = Pair(Pair(ls1.fst, ls2.fst), ret)
+        ls1 = ls1.snd
+        ls2 = ls2.snd
+    return reverse(ret)</span>
+
+
+
+
+# building association lists
+<a id='19' tid='18' class='c'>def <a id='1' tid='0' class='u'>ext</a>(<a id='13' tid='12' class='u'>x</a>, <a id='15' tid='14' class='u'>v</a>, <a id='17' tid='16' class='u'>s</a>):
+    return <a id='3' tid='2' class='c'>Pair</a>(<a id='5' tid='4' class='c'>Pair</a>(<a id='7' tid='6' class='u'>x</a>, <a id='9' tid='8' class='u'>v</a>), <a id='11' tid='10' class='u'>s</a>)</a>
+
+
+
+
+<a id='233' tid='232' class='u'>def <a id='231' tid='230' class='u'>lookup</a>(<a id='211' tid='210' class='u'>x</a>, <a id='209' tid='208' class='u'>s</a>):
+    <a id='213' tid='212' class='u'>p</a> = <a id='219' tid='218' class='u'>assq</a>(<a id='217' tid='216' class='u'>x</a>, <a id='215' tid='214' class='u'>s</a>)
+    if <a id='225' tid='224' class='u'>p</a> <a id='221' tid='220' class='u'>&lt;&gt;</a> <a id='223' tid='222' class='u'>None</a>:
+        return <a id='227' tid='226' class='u'>p.snd</a>
+    else:
+        return <a id='229' tid='228' class='u'>None</a></a>
+
+
+</pre></div></body>
+</html>
