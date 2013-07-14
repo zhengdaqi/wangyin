@@ -26,7 +26,7 @@ title: 丘奇和图灵
 
 后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有同样的观点，支持 lambda calculus，反对图灵机。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。其中 Stephen Kleene 是图灵的师兄，也是一个超级聪明的人。
 
-当我在 2012 年的 POPL 第一次见到 Neil Jones 的时候，他和蔼的跟我解释了许许多多的问题。当我问到他这本书的时候，他对我说：“我不推荐我的书给你，因为大部分的人都觉得 lambda calculus 难以理解。”lambda calculus 难以理解？我怎么从来没感觉到呢？然后我才发现，其实由于经过这些年来，自己对 lambda calculus 的理解程度已经到了深入骨髓的地步，我已经全然不知别人对它是什么样的感觉。
+当我在 2012 年的 POPL 第一次见到 Neil Jones 的时候，他和蔼的跟我解释了许许多多的问题。当我问到他这本书的时候，他对我说：“我不推荐我的书给你，因为大部分的人都觉得 lambda calculus 难以理解。”Lambda calculus 难以理解？我怎么从来没感觉到呢？然后我才发现，由于经过了这么多年的研究之后，自己对 lambda calculus 的理解程度已经到了深入骨髓的地步，所以我已经全然不知新手对它是什么样的感觉。
 
 所以其实 Jones 教授说的也不错，lambda calculus 也许对于大部分人来说不合适，因为对于它没有一个好的入门指南。Lambda calculus 出自逻辑学家之手，而逻辑学家最在行的，就是把很简单的“程序”用天书一样的公式表示出来。所以大部分人在看到 beta-reduction, alpha-conversion, eta-conversion, ... 这大堆的公式的时候，就已经头痛难忍了，怎么还有可能利用它来理解计算理论呢？
 
