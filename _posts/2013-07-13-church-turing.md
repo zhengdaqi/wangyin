@@ -20,7 +20,7 @@ title: 丘奇和图灵
 
 我为这个发现写了两篇博文：《<a href="http://yinwang0.wordpress.com/2012/03/22/reducibility">A Reformulation of Reducibility</a>》和《<a href="http://yinwang0.wordpress.com/2012/10/25/halting">Undecidability Proof of Halting Problem without Diagonalization</a>》。我把 Sipser 的<a href="http://www.amazon.com/dp/113318779X">计算理论课本</a>里面的几乎整个一章的证明都用我自己的这种方式改写了一遍，然后讲给上课的学生。因为我的这种表示方法比起通常的“图灵机+自然语言”的方式简单和精确很多，所以收到了相当好的效果，好些学生对我说有一种恍然大悟的感觉。
 
-我把这一发现告诉了我当时的导师 Amr Sabry。他笑了，说这个他早就知道了。他推荐我去看一本书，叫做《<a href="http://www.diku.dk/~neil/Comp2book.html">Computability and Complexity from a Programming Perspective</a>》，作者是 Neil Jones。这本书不是用 lambda calculus，而是一种近似于 Pascal 的语言（叫做 “WHILE 语言”）来描述计算理论。用这种语言，Jones 不但轻松的证明了所有经典的计算理论定理，而且能够证明一些使用图灵机不能证明的定理。这个语言也被他用在算法复杂度理论中。
+我把这一发现告诉了我当时的导师 Amr Sabry。他笑了，说这个他早就知道了。他推荐我去看一本书，叫做《<a href="http://www.diku.dk/~neil/Comp2book.html">Computability and Complexity from a Programming Perspective</a>》，作者是 Neil Jones。这本书不是用图灵机，而是一种近似于 lambda calculus 的语言（叫做 “WHILE 语言”）来描述计算理论。用这种语言，Jones 不但轻松的证明了所有经典的计算理论定理，而且能够证明一些使用图灵机不能证明的定理。这个语言也被他用在算法复杂度理论中。
 
 曾经我怎么也不明白，为什么可以如此简单的解释清楚的事情，计算理论需要使用图灵机，而且叙述也非常的繁复和含糊。由于计算理论家们的权威，让我不得不怀疑自己的想法里面是不是缺了点什么。可是在看到了 Jones 教授的这本书之后，我倍感欣慰。原来一切本来就是这么的简单！
 
