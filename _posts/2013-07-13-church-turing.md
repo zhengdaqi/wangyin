@@ -16,13 +16,13 @@ title: 丘奇和图灵
 
 图灵的理论绝大多数被用在“计算理论”（Theory of Computation），或者专门的“算法复杂度理论”(Algorithm Complexity）中。绝大多数的计算机学生恐怕都会为图灵机头痛好一阵子。
 
-然而在做了研究生“计算理论”课程两个学期的 TA 之后我却发现，其实几乎所有计算理论的原理，都可以用 lambda calculus，或者程序语言和解释器的原理来描述。所谓“通用图灵机”（Universal Turing Machine），其实就是一个可以解释自己的解释器，叫做“元解释器”（meta-circular interpreter）。在 Dan Friedman 的 B621 程序语言理论课程中，我最后的项目就是一个 <a href="https://github.com/yinwang0/old-toys/blob/master/meta-interp.ss">meta-circular interpreter</a>。这个解释器能够完全的解释它自己，而且可以任意的嵌套（也就是说用它自己来解释它自己，来解释它自己……）。然而我的“元解释器”却是基于 lambda calculus 的，所以我后来发现了一种方法，可以完全的用 lambda calculus 来解释计算理论里面几乎所有的定理。
+然而在做了研究生“计算理论”课程两个学期的 TA 之后我却发现，其实几乎所有计算理论的原理，都可以用 lambda calculus，或者程序语言和解释器的原理来描述。所谓“通用图灵机”（Universal Turing Machine），其实就是一个可以解释自己的解释器，叫做“元解释器”（meta-circular interpreter）。在 Dan Friedman 的 B621 程序语言理论课程中，我最后的项目就是一个 <a href="https://github.com/yinwang0/old-toys/blob/master/meta-interp.ss">meta-circular interpreter</a>。这个解释器能够完全的解释它自己，而且可以任意的嵌套（也就是说用它自己来解释它自己，再来解释它自己……）。然而我的“元解释器”却是基于 lambda calculus 的，所以我后来发现了一种方法，可以完全的用 lambda calculus 来解释计算理论里面几乎所有的定理。
 
-我为这个发现写了两篇博文：《<a href="http://yinwang0.wordpress.com/2012/03/22/reducibility">A Reformulation of Reducibility</a>》和《<a href="http://yinwang0.wordpress.com/2012/10/25/halting">Undecidability Proof of Halting Problem without Diagonalization</a>》。我把 Sipser 的<a href="http://www.amazon.com/dp/113318779X">计算理论课本</a>里面的几乎整个一章都用我自己的这种方式改写了一遍，然后讲给上课的学生。因为我的这种表示方法比起通常的“图灵机+自然语言”的方式简单和精确很多，所以收到了相当好的效果。很多学生对我说有一种顿悟的感觉。
+我为这个发现写了两篇博文：《<a href="http://yinwang0.wordpress.com/2012/03/22/reducibility">A Reformulation of Reducibility</a>》和《<a href="http://yinwang0.wordpress.com/2012/10/25/halting">Undecidability Proof of Halting Problem without Diagonalization</a>》。我把 Sipser 的<a href="http://www.amazon.com/dp/113318779X">计算理论课本</a>里面的几乎整个一章都用我自己的这种方式改写了一遍，然后讲给上课的学生。因为我的这种表示方法比起通常的“图灵机+自然语言”的方式简单和精确很多，所以收到了相当好的效果。很多学生对我说，有一种恍然大悟的感觉。
 
 我把这一发现告诉了我当时的导师 Amr Sabry。他笑了，说这个他早就知道了。他推荐我去看一本书，叫做《<a href="http://www.diku.dk/~neil/Comp2book.html">Computability and Complexity from a Programming Perspective</a>》，作者是 Neil Jones。这本书不是用 lambda calculus，而是一种近似于 Pascal 的语言（叫做 “WHILE 语言”）来描述计算理论。用这种语言，Jones 不但轻松的证明了所有经典的计算理论定理，而且能够证明一些使用图灵机不能证明的定理。这个语言也被他用在算法复杂度理论中。
 
-曾经我怎么也不明白，为什么可以如此简单的解释清楚的事情，计算理论需要使用图灵机，而且叙述也非常的繁复和含糊。由于计算理论家们的权威，让我不得不怀疑自己的想法里面是不是缺了点什么。可是现在看到了 Jones 教授的这本书，让我感觉倍感欣慰。原来一切本来就是这么的简单！
+曾经我怎么也不明白，为什么可以如此简单的解释清楚的事情，计算理论需要使用图灵机，而且叙述也非常的繁复和含糊。由于计算理论家们的权威，让我不得不怀疑自己的想法里面是不是缺了点什么。可是在看到了 Jones 教授的这本书之后，我倍感欣慰。原来一切本来就是这么的简单！
 
 后来从 CMU 教授 Robert Harper 的一篇博文《<a href"http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有同样的观点。
 
