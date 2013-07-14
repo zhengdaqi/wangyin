@@ -24,7 +24,7 @@ title: 丘奇和图灵
 
 曾经我怎么也不明白，为什么可以如此简单的解释清楚的事情，计算理论需要使用图灵机，而且叙述也非常的繁复和含糊。由于计算理论家们的权威，让我不得不怀疑自己的想法里面是不是缺了点什么。可是在看到了 Jones 教授的这本书之后，我倍感欣慰。原来一切本来就是这么的简单！
 
-后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有同样的观点，支持 lambda calculus，反对图灵机。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。
+后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有同样的观点，支持 lambda calculus，反对图灵机。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。其中 Stephen Kleene 是图灵的师兄，也是一个超级聪明的人。
 
 当我在 2012 年的 POPL 第一次见到 Neil Jones 的时候，他和蔼的跟我解释了许许多多的问题。当我问到他这本书的时候，他对我说：“我不推荐我的书给我你，因为大部分的人都觉得 lambda calculus 难以理解。”lambda calculus 难以理解？我怎么从来没感觉到呢？然后我才发现，其实由于自己对 lambda calculus 的理解程度到了深入骨髓的地步，我已经全然不知别人对它是什么样的感觉。
 
