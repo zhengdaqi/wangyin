@@ -20,7 +20,7 @@ title: 丘奇和图灵
 
 ### 从图灵机到 lambda calculus
 
-图灵机永远的停留在了理论的领域，绝大多数被用在“计算理论”（Theory of Computation）中。计算理论其实包括两个主要概念：“可计算性理论”（Computability）和“复杂度理论”(Complexity）。这两个概念在通常的计算理论书籍（比如 Sipser 的经典教材）里，都是用图灵机来叙述的。在学习计算理论的时候，绝大多数的计算机学生恐怕都会为图灵机头痛好一阵子。
+图灵机永远的停留在了理论的领域，绝大多数被用在“计算理论”（Theory of Computation）中。计算理论其实包括两个主要概念：“可计算性理论”（computability）和“复杂度理论”(complexity）。这两个概念在通常的计算理论书籍（比如 Sipser 的经典教材）里，都是用图灵机来叙述的。在学习计算理论的时候，绝大多数的计算机学生恐怕都会为图灵机头痛好一阵子。
 
 然而在做了研究生“计算理论”课程一个学期的 TA 之后我却发现，其实几乎所有计算理论的原理，都可以用 lambda calculus，或者程序语言和解释器的原理来描述。所谓“通用图灵机”（Universal Turing Machine），其实就是一个可以解释自己的解释器，叫做“元解释器”（meta-circular interpreter）。在 Dan Friedman 的 B621 程序语言理论课程中，我最后的项目就是一个 <a href="https://github.com/yinwang0/old-toys/blob/master/meta-interp.ss">meta-circular interpreter</a>。这个解释器能够完全的解释它自己，而且可以任意的嵌套（也就是说用它自己来解释它自己，再来解释它自己……）。然而我的“元解释器”却是基于 lambda calculus 的，所以我后来发现了一种方法，可以完全的用 lambda calculus 来解释计算理论里面几乎所有的定理。
 
@@ -30,7 +30,7 @@ title: 丘奇和图灵
 
 我曾经一直不明白，为什么可以如此简单的解释清楚的事情，计算理论需要使用图灵机，而且叙述也非常的繁复和含糊。由于这些证明都出于资深的计算理论家们之手，让我不得不怀疑自己的想法里面是不是缺了点什么。可是在看到了 Jones 教授的这本书之后，我倍感欣慰。原来一切本来就是这么的简单！
 
-后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有类似的观点，甚至更加极端一些。他强烈的支持 lambda calculus，反对图灵机和其他一切机器。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。其中 Stephen Kleene 是图灵的师兄，也是一个超级聪明的人。
+后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有类似的观点，甚至更加极端一些。他强烈的支持使用 lambda calculus，反对图灵机和其他一切机器作为理论的基础。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。其中 Stephen Kleene 是图灵的师兄，也是一个超级聪明的人。
 
 
 ### 从 lambda calculus 到电子线路
