@@ -15,7 +15,7 @@ title: 丘奇和图灵
 
 如果你查一下<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=8014">数学家谱图</a>，就会发现丘奇其实是图灵的博士导师。然而从 Andrew Hodges 所著的《<a href="http://www.turing.org.uk/bio/part3.html">图灵传</a>》，你却可以看到图灵的心目中仿佛并没有这个导师，仿佛自己的“全新发明”应得的名气，被丘奇抢走了一样（注意作者的用词：robbed）。事实到底是怎样的，恐怕谁也说不清楚。我只能说，貌似计算机科学从诞生之日开始就充满了各种“宗教斗争”。
 
-虽然现在图灵更加有名，然而在现实的程序设计中，却是丘奇的理论在起着绝大部分的作用。据我的经验，丘奇的理论让很多事情变得简单，而图灵的机器却过度的复杂。丘奇所发明的 lambda calculus 以及后续的工作，是几乎一切程序语言的理论基础。而根据老一辈的计算机工程师们的描述，最早的计算机构架也没有受到图灵的启发，那是一些电子工程师完全独立的工作。然而有趣的是，继承了丘奇衣钵的计算机科学家们拿到的那个大奖，仍然被叫做“图灵奖”。我粗略的算了一下，在迄今所有的图灵奖之中，程序语言的研究者占了近三分之一。
+虽然现在图灵更加有名，然而在现实的程序设计中，却是丘奇的理论在起着绝大部分的作用。据我的经验，丘奇的理论让很多事情变得简单，而图灵的机器却过度的复杂。丘奇所发明的 lambda calculus 以及后续的工作，是几乎一切程序语言的理论基础。而根据老一辈的计算机工程师们的描述，最早的计算机构架也没有受到图灵的启发，那是一些电机工程师完全独立的工作。然而有趣的是，继承了丘奇衣钵的计算机科学家们拿到的那个大奖，仍然被叫做“图灵奖”。我粗略的算了一下，在迄今所有的图灵奖之中，程序语言的研究者占了近三分之一。
 
 
 ### 从图灵机到 lambda calculus
@@ -30,7 +30,7 @@ title: 丘奇和图灵
 
 我曾经一直不明白，为什么可以如此简单的解释清楚的事情，计算理论需要使用图灵机，而且叙述也非常的繁复和含糊。由于这些证明都出于资深的计算理论家们之手，让我不得不怀疑自己的想法里面是不是缺了点什么。可是在看到了 Jones 教授的这本书之后，我倍感欣慰。原来一切本来就是这么的简单！
 
-后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有类似的观点，甚至更加极端一些。他强烈的支持使用 lambda calculus，反对图灵机和其他一切机器作为理论的基础。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。其中 Stephen Kleene 是图灵的师兄，也是一个超级聪明的人。
+后来从 CMU 的教授 Robert Harper 的一篇博文《<a href="http://existentialtype.wordpress.com/2011/03/16/languages-and-machines">Languages and Machines</a>》中，我也发现 Harper 跟我具有类似的观点，甚至更加极端一些。他强烈的支持使用 lambda calculus，反对图灵机和其他一切机器作为计算理论的基础。这也难怪，因为 Harper 跟丘奇是“直系”的<a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=50068">学术血统关系</a>：Alonzo Church -> Stephen Kleene -> Robert Constable -> Robert Harper。其中 Stephen Kleene 是图灵的师兄，也是一个超级聪明的人。
 
 
 ### 从 lambda calculus 到电子线路
