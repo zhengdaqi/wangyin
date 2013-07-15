@@ -35,11 +35,11 @@ title: 丘奇和图灵
 
 ### 从 lambda calculus 到电子线路
 
-当我在 2012 年的 POPL 第一次见到 Neil Jones 的时候，他和蔼的跟我解释了许许多多的问题。当我问到他这本书的时候，他对我说：“我不推荐我的书给你，因为大部分的人都觉得 lambda calculus 难以理解。”Lambda calculus 难以理解？我怎么不觉得呢？我觉得图灵机麻烦多了。然后我才发现，由于经过了这么多年的研究之后，自己对 lambda calculus 的理解程度已经到了深入骨髓的地步，所以我已经全然不知新手对它是什么样的感觉。然后我才发现原来“简单”这个词，在具有不同经历的人头脑里，有着不同的含义。
+当我在 2012 年的 POPL 第一次见到 Neil Jones 的时候，他和蔼的跟我解释了许许多多的问题。当我问到他这本书的时候，他对我说：“我不推荐我的书给你，因为大部分的人都觉得 lambda calculus 难以理解。”Lambda calculus 难以理解？我怎么不觉得呢？我觉得图灵机麻烦多了。然后我才发现，由于经过了这么多年的研究之后，自己对 lambda calculus 的理解程度已经到了深入骨髓的地步，所以我已经全然不知新手对它是什么样的感觉。原来“简单”这个词，在具有不同经历的人头脑里，有着完全不同的含义。
 
-所以其实 Jones 教授说的也不错，lambda calculus 也许对于大部分人来说不合适，因为对于它没有一个好的入门指南。Lambda calculus 出自逻辑学家之手，而逻辑学家们最在行的，就是把很简单的“程序”用天书一样的公式表示出来。这难怪老一辈的逻辑学家们，因为他们创造那些概念的时候，计算机还不存在。但是如果现在还用那一堆符号，恐怕就有点落伍了。大部分人在看到 beta-reduction, alpha-conversion, eta-conversion, ... 这大堆的公式的时候，就已经头痛难忍了，怎么还有可能利用它来理解计算理论呢？
+所以其实 Jones 教授说的没错，lambda calculus 也许对于大部分人来说不合适，因为对于它没有一个好的入门指南。Lambda calculus 出自逻辑学家之手，而逻辑学家们最在行的，就是把很简单的“程序”用天书一样的公式表示出来。这难怪老一辈的逻辑学家们，因为他们创造那些概念的时候，计算机还不存在。但是如果现在还用那一堆符号，恐怕就有点落伍了。大部分人在看到 beta-reduction, alpha-conversion, eta-conversion, ... 这大堆的公式的时候，就已经头痛难忍了，怎么还有可能利用它来理解计算理论呢？
 
-其实那一堆符号所表示的东西，终究超越不了现实里的物体和变化,最多不过再幻想一下“多种未来”或者“时间机器”。有了计算机之后，这些符号公式，其实都可以用数据结构和程序语言来表示。所以 lambda calculus 在我的头脑里真的很简单。每一个 lambda 其实就像是一个电路模块。它从电线端子得到输入，然后输出一个结果。你把那些电线叫什么名字根本不重要，重要的是同一根电线的名字必须“一致”，这就是所谓的“alpha-conversion”的原理…… 不在这里多说了，如果你想深入的了解我心目中的 lambda calculus，也许可以看看我的另一篇博文《<a href="http://www.yinwang.org/blog-cn/2012/08/01/interpreter">怎样写一个解释器</a>》，看看这个关于类型推导的<a href="http://www.tudou.com/programs/view/GU9GtDuWSMk">幻灯片</a>的开头，或者进一步，看看如何推导出 <a href="http://yinwang0.wordpress.com/2012/04/09/reinvent-y">Y combinator</a>，或者看看《<a href="http://yinwang0.wordpress.com/2012/09/16/what-is-a-program">What is a program?</a>》。
+其实那一堆符号所表示的东西，终究超越不了现实里的物体和变化，最多不过再幻想一下“多种未来”或者“时间机器”。有了计算机之后，这些符号公式，其实都可以用数据结构和程序语言来表示。所以 lambda calculus 在我的头脑里真的很简单。每一个 lambda 其实就像是一个电路模块。它从电线端子得到输入，然后输出一个结果。你把那些电线叫什么名字根本不重要，重要的是同一根电线的名字必须“一致”，这就是所谓的“alpha-conversion”的原理…… 不在这里多说了，如果你想深入的了解我心目中的 lambda calculus，也许可以看看我的另一篇博文《<a href="http://www.yinwang.org/blog-cn/2012/08/01/interpreter">怎样写一个解释器</a>》，看看这个关于类型推导的<a href="http://www.tudou.com/programs/view/GU9GtDuWSMk">幻灯片</a>的开头，或者进一步，看看如何推导出 <a href="http://yinwang0.wordpress.com/2012/04/09/reinvent-y">Y combinator</a>，或者看看《<a href="http://yinwang0.wordpress.com/2012/09/16/what-is-a-program">What is a program?</a>》。
 
 所以，也许你看到了在我的头脑里面并存着丘奇和图灵的影子。我觉得丘奇的 lambda calculus 是比图灵机简单而强大的描述工具，然而我却又感染到了图灵对于“物理”和“机器”的执着。我觉得逻辑学家们对 lambda calculus 的解释过于复杂，而通过把它理解为物理的“电路元件”，让我对 lambda calculus 做出了更加简单的解释。
 
