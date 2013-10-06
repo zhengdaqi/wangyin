@@ -36,4 +36,5 @@ title: 随便写点
 ### 7
 再说说最近流行的“新语言”吧。被 Go 和 Scala 吵得很热的那种 interface 设计，其实是我在好几年前就已经试过，并且抛弃了的做法。我的电脑里有我自己设计的十多个稀奇古怪的类型系统，几乎每一个都比 Go 和 Scala 的强大而且简单。这就是我为什么对它们所谓的“新设计”都不屑一顾。如果你想了解我心目中最好的的类型系统大概是什么样子，可以参考一下我的 <a href="http://yinwang0.wordpress.com/2010/09/12/pysonar">Python 静态分析器</a>里的类型系统，以及 <a href="http://docs.racket-lang.org/ts-guide">Typed Racket</a>。当然，我得告诉你，我的“时代”又进步了 :-)
 
+### 8
 前段时间我有时还去参加一些 <a href="http://www.meetup.com/SF-Scala">Scala</a> 和 <a href="http://www.meetup.com/The-Bay-Area-Clojure-User-Group">Clojure</a> 的“meetup”，可是后来我发现这些圈子里的人有一种诡异的“气质”，让我觉得不大舒服。过度兴奋，过度热情，喜欢当跟屁虫，对这些语言的弱点视而不见，老喜欢把一些东西当救世主，等等。我参加的最后一个 Scala meetup 是一个 <a href="http://www.meetup.com/SF-Scala/events/133127802">panel</a>，首席嘉宾是 Rod Johnson，也就是 Spring Framework 的作者（现在 Scala 的公司 TypeSafe 工作）。他那天对于函数式语言的那些言论，简直可以用浑水摸鱼，空话套话大话，专骗外行来形容。跟 Spring 的那些教程一个德行，广告成分多于实质内容，说半天抓不住关键。TypeSafe 找这样的人来搞宣传，让我看到了 Scala 的实质动向。在这种地方人人都在高谈阔论函数式编程，却没有发现一个真正的函数式语言专家在那暗地里摇头。最后，我悄悄地退出了 Scala 的 meetup 小组。
