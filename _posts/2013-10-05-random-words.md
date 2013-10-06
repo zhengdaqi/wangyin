@@ -29,7 +29,7 @@ title: 随便写点
 那么我看哪些人的东西有这种感觉呢？这些人包括了大名鼎鼎的 Per Martin-Löf, Robert Harper, Benjamin Pierce, ...  其实在程序语言领域，只剩下极少数几个人真正值得我的钦佩，他们的论文我有兴趣看。有些人很推崇 Haskell 这样的语言，对它们的创造者顶礼膜拜，可是我最看不起的就是那些针对 Haskell 的论文。本来很简单的一个问题，甚至不是问题的问题，一遇到 Haskell 就变成了罗里吧嗦的 paper，标题必为“A Monadic Approach to Something-I-Already-Know”。所以像 Simon Peyton Jones， Simon Marlow 这帮人的 paper，我觉得言之无物，早就不看了。
 
 ### 6
-我发现计算机科学（以及 IT 业）的世界是一个经不起表扬的，欠揍的世界。你越是显得友好，好奇，不耻下问，他们就越是觉得你什么都不懂，越是拿居高临下的态度对你。然而如果你越是鄙视他们，越是目空一切，他们就越是尊敬你。记得有一次，我为了向一个 UPenn 的 PL 学生表示友好，告诉他我知道 Benjamin Pierce （他现在 UPenn 任教），并且看过他的 <a href="http://www.cis.upenn.edu/~bcpierce/sf">Software Foundations</a> 的前几章。结果呢，他顿显居高临下的态度，说：“那本书其实是我们本科生第一门编程课的教材。”
+我发现计算机科学（以及 IT 业）的世界是一个经不起表扬的，欠揍的世界。你越是显得友好，好奇，不耻下问，他们就越是觉得你什么都不懂，越是拿居高临下的态度对你。然而如果你越是鄙视他们，越是目空一切，他们就越是尊敬你。记得有一次，我认识了一个 UPenn 的 PL 学生。出于表示友好，我告诉他我知道 Benjamin Pierce （他现在 UPenn 任教），并且看过他的 <a href="http://www.cis.upenn.edu/~bcpierce/sf">Software Foundations</a> 的前几章。结果呢，他顿显居高临下的态度，说：“那本书其实是我们本科生第一门编程课的教材。”
 
 然而事实其实是，我的水平远在 Pierce 之上。我看 Pierce 那书的时候直冒火，因为它压根就没讲清楚问题的实质，让人知其然而不知其所以然。后来看了 Dan Friedman 的 The Little Prover 手稿，我才发现 Friedman 对类型系统，定理证明系统的理解，其实远比 Pierce 接近本质和深刻。实际上 Pierce 很多年前曾被 Friedman 招募到 IU 任教，然而 Pierce 是唯一一个被 Friedman 招募却又离开 IU 的教员。Pierce 的 Types And Programming Languages (TAPL) 我也压根就没看过，然而我对类型系统的理解却比 Pierce 深刻很多，以至于我真正看到 TAPL 和它的“Advanced”版本的时候，其实早就知道那是怎么回事。Pierce 的博士论文我也看过，是有关 intersection type 的。那真的是一堆天书公式，可实质上没有多大用处。悄悄告诉你们，一年前我轻松的实现了世界上最强大的 intersection type system。我希望对 Benjamin Pierce，Robert Harper 等人顶礼膜拜的 PL 学生明白，世界上还有比他们厉害很多的人，他们在三四十年前就已经得到了比现在的大牛们先进很多的理论。不，Per Martin Lof 不是其中之一。
 
