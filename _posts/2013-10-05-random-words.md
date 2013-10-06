@@ -39,7 +39,7 @@ title: 随便写点
 ### 5
 拿自己跟别人指名道姓的比较，是一件很尴尬的事情。可是如果不知道自己的相对水平，却又是一件不安心的事情，所以我想了一个办法，用来判断我跟一些著名专家在学术上的相对地位。通常来说，如果我看一个人的书或者论文，发现他说的东西我早就自己想出来了，而且理解更加深刻，从他的书和论文里我学不到任何东西，甚至觉得思维受到严重牵制，那么我就知道自己的学术已经在他之上。
 
-那么我看哪些人的东西有这种感觉呢？这些人包括了大名鼎鼎的 Per Martin-Löf, Robert Harper, Benjamin Pierce, ...  其实在程序语言领域，只剩下极少数几个人真正值得我的钦佩，他们的论文我有兴趣看。有些人很推崇 Haskell 这样的语言，对它们的创造者顶礼膜拜，可是我最看不起的就是那些针对 Haskell 的论文。本来很简单的一个问题，甚至不是问题的问题，一遇到 Haskell 就变成了罗里吧嗦的 paper，标题必为“A Monadic Approach to Something-I-Already-Know”。所以像 Simon Peyton Jones， Simon Marlow 这帮人的 paper，我觉得言之无物，早就不看了。
+那么我看哪些人的东西有这种感觉呢？这些人包括了大名鼎鼎的 Per Martin-Löf, Robert Harper, Benjamin Pierce, ...  其实在程序语言领域，只剩下极少数几个人真正值得我的钦佩，他们的论文我有兴趣看。有些人很推崇 Haskell 这样的语言，对它们的创造者顶礼膜拜，可是我最看不起的就是那些针对 Haskell 的论文。本来对于任何其它语言都很简单的一个问题，甚至不是问题的问题，一遇到 Haskell 就变成了罗里吧嗦的 paper，标题必为“A Monadic Approach to Something-I-Already-Know”。所以像 Simon Peyton Jones， Simon Marlow 这帮人的 paper，我觉得言之无物，早就不看了。
 
 ### 6
 我发现计算机科学（以及 IT 业）的世界是一个经不起表扬的，欠揍的世界。你越是显得友好，好奇，不耻下问，他们就越是觉得你什么都不懂，越是拿居高临下的态度对你。然而如果你越是鄙视他们，越是目空一切，他们就越是尊敬你。记得有一次，我认识了一个 UPenn 的 PL 学生。出于表示友好，我告诉他我知道 Benjamin Pierce （他现在 UPenn 任教），并且看过他的 <a href="http://www.cis.upenn.edu/~bcpierce/sf">Software Foundations</a> 的前几章。结果呢，他顿显居高临下的态度，说：“那本书其实是我们本科生第一门编程课的教材。”
