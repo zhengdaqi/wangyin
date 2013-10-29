@@ -1,5 +1,4 @@
-# baseurl: http://yinwang.org
-site_url : http://creatist.cn/wangyin
+baseurl: http://creatist.cn/wangyin
 permalink: /:year/:month/:day/:title
 markdown: rdiscount
 pygments: true
