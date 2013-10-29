@@ -1,5 +1,5 @@
-baseurl: http://yinwang.org
-permalink: /blog-cn/:year/:month/:day/:title
+# baseurl: http://yinwang.org
+permalink: /:year/:month/:day/:title
 markdown: rdiscount
 pygments: true
 date_format: "ordinal"
